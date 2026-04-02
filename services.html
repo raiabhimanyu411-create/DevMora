@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Services — Devmora Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f6ff;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent2: #f97316;
+    --text: #111827;
+    --muted: #6b7280;
+    --white: #111827;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── NAVBAR ─── */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 60px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    background: transparent;
+  }
+  .navbar.scrolled {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  }
+  .navbar.hidden { transform: translateY(-100%); }
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--accent); font-weight: 700; }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    font-weight: 700 !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #4338ca; color: #fff !important; }
+  @media (max-width: 768px) {
+    .navbar { padding: 0 24px; }
+    .nav-links { display: none; }
+  }
+
+  /* ─── CURSOR GLOW ─── */
+  .cursor-glow {
+    position: fixed;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: left 0.12s ease, top 0.12s ease;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+    bottom: -80px; left: 200px;
+    pointer-events: none;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb .sep { color: var(--accent); }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s 0.05s ease both;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 10vw, 130px);
+    line-height: 0.9;
+    letter-spacing: -2px;
+    color: var(--white);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(15px, 2vw, 19px);
+    font-weight: 400;
+    color: var(--muted);
+    max-width: 600px;
+    margin-top: 24px;
+    line-height: 1.75;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-line {
+    position: absolute;
+    bottom: 0; left: 60px; right: 60px;
+    height: 1px;
+    background: var(--border);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 60px; position: relative; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+  .divider-line {
+    width: 60px; height: 3px;
+    background: var(--accent);
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-6 { transition-delay: 0.6s; }
+
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 18px 0;
+  }
+  .marquee-track {
+    display: flex;
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 40px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+  }
+  .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── TAG ─── */
+  .tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(79,70,229,0.07);
+    color: var(--accent);
+    border: 1px solid rgba(79,70,229,0.18);
+    font-weight: 500;
+  }
+
+  /* ─── SERVICES GRID ─── */
+  .services-section { background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .service-card:hover { transform: translateY(-6px); border-color: rgba(79,70,229,0.2); box-shadow: 0 12px 40px rgba(79,70,229,0.10); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(79,70,229,0.0), rgba(79,70,229,0.35), rgba(79,70,229,0.0));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: rgba(79,70,229,0.06);
+    line-height: 1;
+    position: absolute;
+    top: 16px; right: 24px;
+    user-select: none;
+    pointer-events: none;
+  }
+  .service-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+  .service-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .service-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .service-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .service-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* ─── PROCESS ─── */
+  .process { background: var(--surface); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+  .process-step {
+    background: var(--card);
+    padding: 48px 32px;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .process-step:hover { background: #f0f1ff; }
+  .process-step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: rgba(79,70,229,0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .process-step-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .process-step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .process-step-desc { color: var(--muted); font-size: 13px; line-height: 1.7; }
+  @media (max-width: 900px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* ─── TECH STACK ─── */
+  .techstack { background: var(--bg); }
+  .tech-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .tech-category {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .tech-category:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(79,70,229,0.08); }
+  .tech-cat-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .tech-cat-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-pill {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: rgba(79,70,229,0.06);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .tech-pill:hover { background: rgba(79,70,229,0.12); border-color: rgba(79,70,229,0.3); }
+
+  /* ─── PRICING ─── */
+  .pricing { background: var(--surface); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .pricing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 32px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+  .pricing-card.featured {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .pricing-card.featured .pricing-name,
+  .pricing-card.featured .pricing-price,
+  .pricing-card.featured .pricing-period,
+  .pricing-card.featured .pricing-desc,
+  .pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.9) !important; }
+  .pricing-card.featured .pricing-price { color: #fff !important; }
+  .pricing-card.featured .pricing-name { color: rgba(255,255,255,0.7) !important; }
+  .pricing-card.featured .pricing-check { color: #fff !important; }
+  .popular-badge {
+    position: absolute;
+    top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent2);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .pricing-name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .pricing-period {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .pricing-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-card.featured .pricing-desc { border-bottom-color: rgba(255,255,255,0.2); }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .pricing-check { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .pricing-btn {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .pricing-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .pricing-card.featured .pricing-btn {
+    background: #fff;
+    color: var(--accent);
+  }
+  .pricing-card.featured .pricing-btn:hover { background: rgba(255,255,255,0.92); }
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--bg);
+    text-align: center;
+    padding: 120px 60px;
+  }
+  .cta-inner { max-width: 700px; margin: 0 auto; }
+  .cta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79,70,229,0.07);
+    border: 1px solid rgba(79,70,229,0.25);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  .cta-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .cta-title span { color: var(--accent); }
+  .cta-desc { color: var(--muted); font-size: 17px; line-height: 1.8; margin-bottom: 40px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px 36px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.03); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  .footer-brand span { color: var(--accent); }
+  .footer-copy { color: var(--muted); font-size: 13px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 768px) {
+    section { padding: 70px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+    .cta-section { padding: 80px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand">DEVMORA <span>TECH</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#portfolio">Work</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">→</span>
+    <span>Services</span>
+  </div>
+
+  <div class="hero-label">What We Offer</div>
+  <h1 class="hero-title">
+    OUR<br/>
+    <span>SERVICES</span>
+  </h1>
+  <p class="hero-sub">
+    End-to-end digital solutions — from concept to deployment. We build fast, scalable, and beautifully crafted products that grow your business.
+  </p>
+
+  <div class="hero-line"></div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="dot"></span>Web Development</div>
+    <div class="marquee-item"><span class="dot"></span>Mobile Apps</div>
+    <div class="marquee-item"><span class="dot"></span>E-Commerce</div>
+    <div class="marquee-item"><span class="dot"></span>SEO & Performance</div>
+    <div class="marquee-item"><span class="dot"></span>Cloud Deployment</div>
+    <div class="marquee-item"><span class="dot"></span>Maintenance & Retainers</div>
+    <div class="marquee-item"><span class="dot"></span>UI/UX Design</div>
+    <div class="marquee-item"><span class="dot"></span>API Integration</div>
+    <div class="marquee-item"><span class="dot"></span>Web Development</div>
+    <div class="marquee-item"><span class="dot"></span>Mobile Apps</div>
+    <div class="marquee-item"><span class="dot"></span>E-Commerce</div>
+    <div class="marquee-item"><span class="dot"></span>SEO & Performance</div>
+    <div class="marquee-item"><span class="dot"></span>Cloud Deployment</div>
+    <div class="marquee-item"><span class="dot"></span>Maintenance & Retainers</div>
+    <div class="marquee-item"><span class="dot"></span>UI/UX Design</div>
+    <div class="marquee-item"><span class="dot"></span>API Integration</div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES GRID ═══ -->
+<section class="services-section" id="services">
+  <div class="section-label reveal">What We Do</div>
+  <div class="divider-line reveal"></div>
+  <h2 class="section-title reveal">Services Built<br/>for Results</h2>
+  <p class="section-desc reveal reveal-delay-1">We don't just write code — we build digital products that grow your business. Every service is delivered with full transparency and zero fluff.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">01</div>
+      <span class="service-icon">🌐</span>
+      <div class="service-name">Web Development</div>
+      <p class="service-desc">Custom websites and web applications built with modern React frontends and robust Node.js backends. Fast, scalable, and easy to maintain. We go beyond templates — every project is purpose-built for your users.</p>
+      <ul class="service-features">
+        <li>Responsive, mobile-first design</li>
+        <li>React + Node.js full-stack architecture</li>
+        <li>REST API development & integration</li>
+        <li>Admin dashboard & CMS panels</li>
+        <li>MySQL / PostgreSQL database design</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Vite</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">02</div>
+      <span class="service-icon">🛒</span>
+      <div class="service-name">E-Commerce Platforms</div>
+      <p class="service-desc">End-to-end e-commerce solutions with vendor management, payment gateways, CDN-optimised images, and fully custom admin dashboards. We've shipped platforms handling 1000+ products with real-time inventory.</p>
+      <ul class="service-features">
+        <li>Multi-vendor marketplace support</li>
+        <li>CCAvenue / Razorpay / Stripe integration</li>
+        <li>Cloudinary CDN image optimisation</li>
+        <li>Vendor & admin management panels</li>
+        <li>Order tracking & notification systems</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">Custom Builds</span>
+        <span class="tag">CCAvenue</span>
+        <span class="tag">Cloudinary</span>
+        <span class="tag">Razorpay</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">03</div>
+      <span class="service-icon">📱</span>
+      <div class="service-name">Mobile App Development</div>
+      <p class="service-desc">Cross-platform mobile applications designed for real users — buyer apps, service apps, and enterprise tools. One codebase, both iOS and Android, with native-quality performance.</p>
+      <ul class="service-features">
+        <li>React Native for iOS & Android</li>
+        <li>Backend API integration</li>
+        <li>Push notifications & real-time updates</li>
+        <li>App Store & Play Store deployment</li>
+        <li>Offline-first capabilities</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">React Native</span>
+        <span class="tag">iOS & Android</span>
+        <span class="tag">Push Notifications</span>
+        <span class="tag">API Integration</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-num">04</div>
+      <span class="service-icon">🔍</span>
+      <div class="service-name">SEO & Speed Optimisation</div>
+      <p class="service-desc">Technical SEO audits, schema markup, Core Web Vitals optimisation, and Google Search Console management for real rankings. We've achieved GTmetrix Grade A and boosted organic traffic for UK clients.</p>
+      <ul class="service-features">
+        <li>Core Web Vitals & GTmetrix Grade A</li>
+        <li>Schema markup & structured data</li>
+        <li>XML sitemaps & robots.txt</li>
+        <li>Google Search Console management</li>
+        <li>Page speed & image optimisation</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">GTmetrix A</span>
+        <span class="tag">Schema Markup</span>
+        <span class="tag">Sitemap</span>
+        <span class="tag">GSC</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-5">
+      <div class="service-num">05</div>
+      <span class="service-icon">☁️</span>
+      <div class="service-name">Server & Cloud Deployment</div>
+      <p class="service-desc">AWS EC2 deployments, PM2 process management, cPanel/WHM server administration, and CI/CD setup for reliable uptime. We've deployed and maintained government-grade infrastructure with 99.9% availability.</p>
+      <ul class="service-features">
+        <li>AWS EC2 setup & configuration</li>
+        <li>PM2 process management</li>
+        <li>cPanel / WHM administration</li>
+        <li>SSL, DNS & domain management</li>
+        <li>Automated backups & monitoring</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">AWS EC2</span>
+        <span class="tag">PM2</span>
+        <span class="tag">cPanel/WHM</span>
+        <span class="tag">Linux</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal reveal-delay-6">
+      <div class="service-num">06</div>
+      <span class="service-icon">🔧</span>
+      <div class="service-name">Maintenance & Retainers</div>
+      <p class="service-desc">Ongoing website care packages so you never have to worry about your digital presence again. Monthly bug fixes, updates, speed monitoring, backups, and priority support with a dedicated account manager.</p>
+      <ul class="service-features">
+        <li>Monthly security updates</li>
+        <li>Performance monitoring & alerts</li>
+        <li>Bug fixes & minor feature additions</li>
+        <li>Weekly automated backups</li>
+        <li>Priority support & same-day response</li>
+      </ul>
+      <div class="service-tags">
+        <span class="tag">Monthly Plans</span>
+        <span class="tag">Bug Fixes</span>
+        <span class="tag">Monitoring</span>
+        <span class="tag">Backups</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process" id="process">
+  <div class="section-label reveal">How We Work</div>
+  <div class="divider-line reveal"></div>
+  <h2 class="section-title reveal">Our Process</h2>
+  <p class="section-desc reveal reveal-delay-1">A clear, proven four-step process that keeps every project on track, on budget, and on time.</p>
+
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="process-step-num">01</div>
+      <span class="process-step-icon">💬</span>
+      <div class="process-step-title">Discovery Call</div>
+      <p class="process-step-desc">We start with a free 30-minute call to understand your goals, users, and technical requirements. No commitment needed — just an honest conversation.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="process-step-num">02</div>
+      <span class="process-step-icon">📋</span>
+      <div class="process-step-title">Scoping & Proposal</div>
+      <p class="process-step-desc">We send a detailed written proposal with timeline, tech stack, and fixed pricing. You'll know exactly what you're getting before signing anything.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="process-step-num">03</div>
+      <span class="process-step-icon">🛠️</span>
+      <div class="process-step-title">Build & Iterate</div>
+      <p class="process-step-desc">We build in sprints with regular check-ins and a shared staging environment so you can track progress and give feedback at every milestone.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-4">
+      <div class="process-step-num">04</div>
+      <span class="process-step-icon">🚀</span>
+      <div class="process-step-title">Launch & Support</div>
+      <p class="process-step-desc">We handle deployment, go-live monitoring, and post-launch support. Your project doesn't end at launch — we're there when you need us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TECH STACK ═══ -->
+<section class="techstack" id="tech">
+  <div class="section-label reveal">Under the Hood</div>
+  <div class="divider-line reveal"></div>
+  <h2 class="section-title reveal">Our Tech Stack</h2>
+  <p class="section-desc reveal reveal-delay-1">Battle-tested, production-grade technologies that we've used to ship real-world projects for real clients.</p>
+
+  <div class="tech-categories">
+    <div class="tech-category reveal reveal-delay-1">
+      <span class="tech-cat-icon">⚛️</span>
+      <div class="tech-cat-name">Frontend</div>
+      <div class="tech-pills">
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Vite</span>
+        <span class="tech-pill">React Native</span>
+        <span class="tech-pill">JavaScript</span>
+        <span class="tech-pill">CSS / Tailwind</span>
+      </div>
+    </div>
+    <div class="tech-category reveal reveal-delay-2">
+      <span class="tech-cat-icon">🟢</span>
+      <div class="tech-cat-name">Backend</div>
+      <div class="tech-pills">
+        <span class="tech-pill">Node.js</span>
+        <span class="tech-pill">Express.js</span>
+        <span class="tech-pill">Sequelize ORM</span>
+        <span class="tech-pill">REST APIs</span>
+        <span class="tech-pill">PHP</span>
+      </div>
+    </div>
+    <div class="tech-category reveal reveal-delay-3">
+      <span class="tech-cat-icon">🗄️</span>
+      <div class="tech-cat-name">Databases</div>
+      <div class="tech-pills">
+        <span class="tech-pill">MySQL</span>
+        <span class="tech-pill">PostgreSQL</span>
+        <span class="tech-pill">MongoDB</span>
+        <span class="tech-pill">Redis</span>
+      </div>
+    </div>
+    <div class="tech-category reveal reveal-delay-4">
+      <span class="tech-cat-icon">☁️</span>
+      <div class="tech-cat-name">Cloud & DevOps</div>
+      <div class="tech-pills">
+        <span class="tech-pill">AWS EC2</span>
+        <span class="tech-pill">PM2</span>
+        <span class="tech-pill">cPanel/WHM</span>
+        <span class="tech-pill">Linux</span>
+        <span class="tech-pill">Nginx</span>
+      </div>
+    </div>
+    <div class="tech-category reveal reveal-delay-5">
+      <span class="tech-cat-icon">💳</span>
+      <div class="tech-cat-name">Payments & Media</div>
+      <div class="tech-pills">
+        <span class="tech-pill">CCAvenue</span>
+        <span class="tech-pill">Razorpay</span>
+        <span class="tech-pill">Stripe</span>
+        <span class="tech-pill">Cloudinary</span>
+      </div>
+    </div>
+    <div class="tech-category reveal reveal-delay-6">
+      <span class="tech-cat-icon">📊</span>
+      <div class="tech-cat-name">SEO & Analytics</div>
+      <div class="tech-pills">
+        <span class="tech-pill">Google Search Console</span>
+        <span class="tech-pill">Schema Markup</span>
+        <span class="tech-pill">Leaflet.js</span>
+        <span class="tech-pill">GeoJSON</span>
+        <span class="tech-pill">GTmetrix</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="pricing" id="pricing">
+  <div class="section-label reveal">Transparent Pricing</div>
+  <div class="divider-line reveal"></div>
+  <h2 class="section-title reveal">Maintenance Plans</h2>
+  <p class="section-desc reveal reveal-delay-1">For one-off projects, pricing is scoped per project. For ongoing care, choose a retainer plan that fits your needs.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-name">Starter</div>
+      <div class="pricing-price">₹4,999</div>
+      <div class="pricing-period">/ month</div>
+      <p class="pricing-desc">For small businesses needing basic ongoing care and peace of mind.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Monthly security updates</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Weekly backups</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Up to 2 bug fixes/month</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Uptime monitoring</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Email support (48hr)</li>
+      </ul>
+      <a href="contact.html" class="pricing-btn">Get Started</a>
+    </div>
+
+    <div class="pricing-card featured reveal reveal-delay-2">
+      <div class="popular-badge">Most Popular</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-price">₹9,999</div>
+      <div class="pricing-period">/ month</div>
+      <p class="pricing-desc">For growing businesses that need regular updates and faster support.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Everything in Starter</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Up to 8 bug fixes/month</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Minor feature additions</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> SEO monitoring</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Priority support (24hr)</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Monthly performance report</li>
+      </ul>
+      <a href="contact.html" class="pricing-btn">Get Started</a>
+    </div>
+
+    <div class="pricing-card reveal reveal-delay-3">
+      <div class="pricing-name">Enterprise</div>
+      <div class="pricing-price">Custom</div>
+      <div class="pricing-period">tailored to you</div>
+      <p class="pricing-desc">For large-scale platforms and teams needing dedicated engineering support.</p>
+      <ul class="pricing-features">
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Everything in Growth</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Unlimited requests</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Dedicated developer</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> SLA guarantee</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Same-day response</li>
+        <li class="pricing-feature"><span class="pricing-check">✓</span> Video calls & on-site support</li>
+      </ul>
+      <a href="contact.html" class="pricing-btn">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="cta-tag">Free Discovery Call</div>
+    <h2 class="cta-title">READY TO<br/><span>START?</span></h2>
+    <p class="cta-desc">Every great product starts with a conversation. Book a free 30-minute call and let's talk about what you're building.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-primary">Book a Free Call</a>
+      <a href="about.html" class="btn-ghost">About Devmora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="index.html" class="footer-brand">DEVMORA <span>TECHNOLOGY</span></a>
+  <div class="footer-copy">© 2025 Devmora Technology. Greater Noida, India.</div>
+  <div class="footer-links">
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="index.html#portfolio">Work</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+  /* ── Navbar ── */
+  const navbar = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    navbar.classList.toggle('hidden', y > lastY + 8 && y > 120);
+    if (y < lastY - 8) navbar.classList.remove('hidden');
+    lastY = y;
+  }, { passive: true });
+
+  /* ── Cursor glow ── */
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+
+  /* ── Scroll reveal ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
