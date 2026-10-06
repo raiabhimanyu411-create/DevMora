@@ -3,1082 +3,346 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Services — Devmora Technology</title>
-<link rel="icon" type="image/png" href="/favicon.png"/>
-<link rel="apple-touch-icon" href="/favicon.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<title>Web, App &amp; E-Commerce Development Services | Devmora Technology</title>
+<meta name="description" content="Web development, e-commerce, React Native mobile apps, SEO, AWS cloud deployment and maintenance retainers by Devmora Technology, India."/>
+<meta name="keywords" content="web development services India, e-commerce development, React Native app development, SEO services, AWS deployment, website maintenance plans"/>
+<meta name="author" content="Devmora Technology"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<link rel="canonical" href="https://devmoratech.com/services"/>
+<meta name="theme-color" content="#08080b"/>
+<meta name="geo.region" content="IN-UP"/>
+<meta name="geo.placename" content="Greater Noida"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Devmora Technology"/>
+<meta property="og:title" content="Web, App &amp; E-Commerce Development Services | Devmora Technology"/>
+<meta property="og:description" content="Web development, e-commerce, React Native mobile apps, SEO, AWS cloud deployment and maintenance retainers by Devmora Technology, India."/>
+<meta property="og:url" content="https://devmoratech.com/services"/>
+<meta property="og:image" content="https://devmoratech.com/favicon.png"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web, App &amp; E-Commerce Development Services | Devmora Technology"/>
+<meta name="twitter:description" content="Web development, e-commerce, React Native mobile apps, SEO, AWS cloud deployment and maintenance retainers by Devmora Technology, India."/>
+<meta name="twitter:image" content="https://devmoratech.com/favicon.png"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
 
-  :root {
-    --bg: #f5f6ff;
-    --surface: #ffffff;
-    --card: #ffffff;
-    --border: rgba(0,0,0,0.08);
-    --accent: #4f46e5;
-    --accent-hover: #4338ca;
-    --accent2: #f97316;
-    --text: #111827;
-    --muted: #6b7280;
-    --white: #111827;
-  }
+</head><body data-page="services">
 
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ─── NAVBAR ─── */
-  .navbar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 0 60px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
-    background: transparent;
-  }
-  .navbar.scrolled {
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
-  }
-  .navbar.hidden { transform: translateY(-100%); }
-  .nav-brand {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--text);
-    letter-spacing: 1px;
-    text-decoration: none;
-  }
-  .nav-brand span { color: var(--accent); }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--accent); font-weight: 700; }
-  .nav-cta {
-    background: var(--accent);
-    color: #fff !important;
-    font-weight: 700 !important;
-    padding: 8px 20px;
-    border-radius: 4px;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: #4338ca; color: #fff !important; }
-  @media (max-width: 768px) {
-    .navbar { padding: 0 24px; }
-    .nav-links { display: none; }
-  }
-
-  /* ─── CURSOR GLOW ─── */
-  .cursor-glow {
-    position: fixed;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-    transition: left 0.12s ease, top 0.12s ease;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    position: relative;
-    min-height: 72vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 120px 60px 80px;
-    overflow: hidden;
-    background: var(--surface);
-  }
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
-    pointer-events: none;
-  }
-  .hero-glow {
-    position: absolute;
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(79,70,229,0.12) 0%, transparent 70%);
-    top: -200px; right: -100px;
-    pointer-events: none;
-  }
-  .hero-glow2 {
-    position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
-    bottom: -80px; left: 200px;
-    pointer-events: none;
-  }
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 24px;
-    animation: fadeUp 0.5s ease both;
-  }
-  .breadcrumb a { color: var(--muted); text-decoration: none; }
-  .breadcrumb a:hover { color: var(--accent); }
-  .breadcrumb .sep { color: var(--accent); }
-  .hero-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    animation: fadeUp 0.6s 0.05s ease both;
-  }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(60px, 10vw, 130px);
-    line-height: 0.9;
-    letter-spacing: -2px;
-    color: var(--white);
-    animation: fadeUp 0.7s 0.1s ease both;
-  }
-  .hero-title span { color: var(--accent); }
-  .hero-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(15px, 2vw, 19px);
-    font-weight: 400;
-    color: var(--muted);
-    max-width: 600px;
-    margin-top: 24px;
-    line-height: 1.75;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-  .hero-line {
-    position: absolute;
-    bottom: 0; left: 60px; right: 60px;
-    height: 1px;
-    background: var(--border);
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── SECTIONS ─── */
-  section { padding: 100px 60px; position: relative; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 20px;
-  }
-  .section-desc {
-    color: var(--muted);
-    font-size: 17px;
-    max-width: 560px;
-    line-height: 1.8;
-  }
-  .divider-line {
-    width: 60px; height: 3px;
-    background: var(--accent);
-    margin-bottom: 24px;
-    border-radius: 2px;
-  }
-
-  /* ─── SCROLL REVEAL ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-  .reveal-delay-5 { transition-delay: 0.5s; }
-  .reveal-delay-6 { transition-delay: 0.6s; }
-
-  /* ─── MARQUEE ─── */
-  .marquee-section {
-    overflow: hidden;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    padding: 18px 0;
-  }
-  .marquee-track {
-    display: flex;
-    animation: marquee 28s linear infinite;
-    width: max-content;
-  }
-  .marquee-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 40px;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    border-right: 1px solid var(--border);
-  }
-  .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* ─── TAG ─── */
-  .tag {
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    background: rgba(79,70,229,0.07);
-    color: var(--accent);
-    border: 1px solid rgba(79,70,229,0.18);
-    font-weight: 500;
-  }
-
-  /* ─── SERVICES GRID ─── */
-  .services-section { background: var(--bg); }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    margin-top: 60px;
-  }
-  .service-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-  }
-  .service-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    transform-origin: left;
-  }
-  .service-card:hover { transform: translateY(-6px); border-color: rgba(79,70,229,0.2); box-shadow: 0 12px 40px rgba(79,70,229,0.10); }
-  .service-card:hover::after { transform: scaleX(1); }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(79,70,229,0.0), rgba(79,70,229,0.35), rgba(79,70,229,0.0));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s;
-    pointer-events: none;
-  }
-  .service-card:hover::before { opacity: 1; }
-  .service-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
-    color: rgba(79,70,229,0.06);
-    line-height: 1;
-    position: absolute;
-    top: 16px; right: 24px;
-    user-select: none;
-    pointer-events: none;
-  }
-  .service-icon { font-size: 36px; margin-bottom: 20px; display: block; }
-  .service-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 12px;
-  }
-  .service-desc {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 24px;
-  }
-  .service-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .service-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--muted);
-  }
-  .service-features li::before {
-    content: '✓';
-    color: var(--accent);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-
-  /* ─── PROCESS ─── */
-  .process { background: var(--surface); }
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-top: 60px;
-  }
-  .process-step {
-    background: var(--card);
-    padding: 48px 32px;
-    position: relative;
-    transition: background 0.3s;
-  }
-  .process-step:hover { background: #f0f1ff; }
-  .process-step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    color: rgba(79,70,229,0.08);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-  .process-step-icon { font-size: 28px; margin-bottom: 16px; display: block; }
-  .process-step-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 10px;
-  }
-  .process-step-desc { color: var(--muted); font-size: 13px; line-height: 1.7; }
-  @media (max-width: 900px) {
-    .process-steps { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .process-steps { grid-template-columns: 1fr; }
-  }
-
-  /* ─── TECH STACK ─── */
-  .techstack { background: var(--bg); }
-  .tech-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 60px;
-  }
-  .tech-category {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 32px 28px;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .tech-category:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(79,70,229,0.08); }
-  .tech-cat-icon { font-size: 28px; margin-bottom: 14px; display: block; }
-  .tech-cat-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-  .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tech-pill {
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 100px;
-    background: rgba(79,70,229,0.06);
-    color: var(--text);
-    border: 1px solid var(--border);
-    font-weight: 500;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .tech-pill:hover { background: rgba(79,70,229,0.12); border-color: rgba(79,70,229,0.3); }
-
-  /* ─── PRICING ─── */
-  .pricing { background: var(--surface); }
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 60px;
-  }
-  .pricing-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px 32px;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-  .pricing-card.featured {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-  .pricing-card.featured .pricing-name,
-  .pricing-card.featured .pricing-price,
-  .pricing-card.featured .pricing-period,
-  .pricing-card.featured .pricing-desc,
-  .pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.9) !important; }
-  .pricing-card.featured .pricing-price { color: #fff !important; }
-  .pricing-card.featured .pricing-name { color: rgba(255,255,255,0.7) !important; }
-  .pricing-card.featured .pricing-check { color: #fff !important; }
-  .popular-badge {
-    position: absolute;
-    top: -12px; left: 50%; transform: translateX(-50%);
-    background: var(--accent2);
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 4px 16px;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-  .pricing-name {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-  .pricing-price {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    color: var(--white);
-    line-height: 1;
-  }
-  .pricing-period {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-  .pricing-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-  }
-  .pricing-card.featured .pricing-desc { border-bottom-color: rgba(255,255,255,0.2); }
-  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-  .pricing-feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 14px;
-    color: var(--text);
-  }
-  .pricing-check { color: var(--accent); font-weight: 700; flex-shrink: 0; }
-  .pricing-btn {
-    display: block;
-    text-align: center;
-    background: var(--accent);
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .pricing-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-  .pricing-card.featured .pricing-btn {
-    background: #fff;
-    color: var(--accent);
-  }
-  .pricing-card.featured .pricing-btn:hover { background: rgba(255,255,255,0.92); }
-  @media (max-width: 900px) {
-    .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
-  }
-
-  /* ─── CTA ─── */
-  .cta-section {
-    background: var(--bg);
-    text-align: center;
-    padding: 120px 60px;
-  }
-  .cta-inner { max-width: 700px; margin: 0 auto; }
-  .cta-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(79,70,229,0.07);
-    border: 1px solid rgba(79,70,229,0.25);
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-  }
-  .cta-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .cta-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 8vw, 96px);
-    line-height: 0.95;
-    color: var(--white);
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-  }
-  .cta-title span { color: var(--accent); }
-  .cta-desc { color: var(--muted); font-size: 17px; line-height: 1.8; margin-bottom: 40px; }
-  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    padding: 16px 36px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 16px 36px;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-ghost:hover { border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.03); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 40px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .footer-brand {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--white);
-    letter-spacing: 1px;
-    text-decoration: none;
-  }
-  .footer-brand span { color: var(--accent); }
-  .footer-copy { color: var(--muted); font-size: 13px; }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--accent); }
-
-  @media (max-width: 768px) {
-    section { padding: 70px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
-    .cta-section { padding: 80px 24px; }
-    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
-  }
-</style>
-</head>
-<body>
-
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<!-- ═══ NAVBAR ═══ -->
-<nav class="navbar" id="navbar">
-  <a href="/" class="nav-brand">DEVMORA <span>TECH</span></a>
-  <ul class="nav-links">
-    <li><a href="/services" class="active">Services</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="index.html#portfolio">Work</a></li>
-    <li><a href="/contact" class="nav-cta">Get a Quote</a></li>
-  </ul>
-</nav>
-
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
-
-  <div class="breadcrumb">
-    <a href="/">Home</a>
-    <span class="sep">→</span>
-    <span>Services</span>
-  </div>
-
-  <div class="hero-label">What We Offer</div>
-  <h1 class="hero-title">
-    OUR<br/>
-    <span>SERVICES</span>
-  </h1>
-  <p class="hero-sub">
-    End-to-end digital solutions — from concept to deployment. We build fast, scalable, and beautifully crafted products that grow your business.
-  </p>
-
-  <div class="hero-line"></div>
-</section>
-
-<!-- ═══ MARQUEE ═══ -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="dot"></span>Web Development</div>
-    <div class="marquee-item"><span class="dot"></span>Mobile Apps</div>
-    <div class="marquee-item"><span class="dot"></span>E-Commerce</div>
-    <div class="marquee-item"><span class="dot"></span>SEO & Performance</div>
-    <div class="marquee-item"><span class="dot"></span>Cloud Deployment</div>
-    <div class="marquee-item"><span class="dot"></span>Maintenance & Retainers</div>
-    <div class="marquee-item"><span class="dot"></span>UI/UX Design</div>
-    <div class="marquee-item"><span class="dot"></span>API Integration</div>
-    <div class="marquee-item"><span class="dot"></span>Web Development</div>
-    <div class="marquee-item"><span class="dot"></span>Mobile Apps</div>
-    <div class="marquee-item"><span class="dot"></span>E-Commerce</div>
-    <div class="marquee-item"><span class="dot"></span>SEO & Performance</div>
-    <div class="marquee-item"><span class="dot"></span>Cloud Deployment</div>
-    <div class="marquee-item"><span class="dot"></span>Maintenance & Retainers</div>
-    <div class="marquee-item"><span class="dot"></span>UI/UX Design</div>
-    <div class="marquee-item"><span class="dot"></span>API Integration</div>
+<div class="curtain" aria-hidden="true">
+  <div class="curtain__inner">
+    <div class="curtain__word"><span>devmora</span><span style="animation-delay:.12s"><i>.</i></span></div>
   </div>
 </div>
+<div class="progress" aria-hidden="true"></div>
 
-<!-- ═══ SERVICES GRID ═══ -->
-<section class="services-section" id="services">
-  <div class="section-label reveal">What We Do</div>
-  <div class="divider-line reveal"></div>
-  <h2 class="section-title reveal">Services Built<br/>for Results</h2>
-  <p class="section-desc reveal reveal-delay-1">We don't just write code — we build digital products that grow your business. Every service is delivered with full transparency and zero fluff.</p>
-
-  <div class="services-grid">
-
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">01</div>
-      <span class="service-icon">🌐</span>
-      <div class="service-name">Web Development</div>
-      <p class="service-desc">Custom websites and web applications built with modern React frontends and robust Node.js backends. Fast, scalable, and easy to maintain. We go beyond templates — every project is purpose-built for your users.</p>
-      <ul class="service-features">
-        <li>Responsive, mobile-first design</li>
-        <li>React + Node.js full-stack architecture</li>
-        <li>REST API development & integration</li>
-        <li>Admin dashboard & CMS panels</li>
-        <li>MySQL / PostgreSQL database design</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">React</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">REST APIs</span>
-        <span class="tag">Vite</span>
+<header class="nav">
+  <div class="container">
+    <div class="nav__bar">
+      <a href="index.html" class="brand" aria-label="Devmora Technology home">
+        <span class="brand__mark">D</span>
+        <span>Devmora<small>.tech</small></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="services.html" class="nav__link" data-nav="services">Services</a>
+        <a href="work.html" class="nav__link" data-nav="work">Work</a>
+        <a href="about.html" class="nav__link" data-nav="about">About</a>
+        <a href="contact.html" class="nav__link" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav__right">
+        <a href="contact.html" class="btn btn-primary btn-sm" data-magnetic>Start a project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       </div>
     </div>
-
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">02</div>
-      <span class="service-icon">🛒</span>
-      <div class="service-name">E-Commerce Platforms</div>
-      <p class="service-desc">End-to-end e-commerce solutions with vendor management, payment gateways, CDN-optimised images, and fully custom admin dashboards. We've shipped platforms handling 1000+ products with real-time inventory.</p>
-      <ul class="service-features">
-        <li>Multi-vendor marketplace support</li>
-        <li>CCAvenue / Razorpay / Stripe integration</li>
-        <li>Cloudinary CDN image optimisation</li>
-        <li>Vendor & admin management panels</li>
-        <li>Order tracking & notification systems</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">Custom Builds</span>
-        <span class="tag">CCAvenue</span>
-        <span class="tag">Cloudinary</span>
-        <span class="tag">Razorpay</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-num">03</div>
-      <span class="service-icon">📱</span>
-      <div class="service-name">Mobile App Development</div>
-      <p class="service-desc">Cross-platform mobile applications designed for real users — buyer apps, service apps, and enterprise tools. One codebase, both iOS and Android, with native-quality performance.</p>
-      <ul class="service-features">
-        <li>React Native for iOS & Android</li>
-        <li>Backend API integration</li>
-        <li>Push notifications & real-time updates</li>
-        <li>App Store & Play Store deployment</li>
-        <li>Offline-first capabilities</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">React Native</span>
-        <span class="tag">iOS & Android</span>
-        <span class="tag">Push Notifications</span>
-        <span class="tag">API Integration</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal reveal-delay-4">
-      <div class="service-num">04</div>
-      <span class="service-icon">🔍</span>
-      <div class="service-name">SEO & Speed Optimisation</div>
-      <p class="service-desc">Technical SEO audits, schema markup, Core Web Vitals optimisation, and Google Search Console management for real rankings. We've achieved GTmetrix Grade A and boosted organic traffic for UK clients.</p>
-      <ul class="service-features">
-        <li>Core Web Vitals & GTmetrix Grade A</li>
-        <li>Schema markup & structured data</li>
-        <li>XML sitemaps & robots.txt</li>
-        <li>Google Search Console management</li>
-        <li>Page speed & image optimisation</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">GTmetrix A</span>
-        <span class="tag">Schema Markup</span>
-        <span class="tag">Sitemap</span>
-        <span class="tag">GSC</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal reveal-delay-5">
-      <div class="service-num">05</div>
-      <span class="service-icon">☁️</span>
-      <div class="service-name">Server & Cloud Deployment</div>
-      <p class="service-desc">AWS EC2 deployments, PM2 process management, cPanel/WHM server administration, and CI/CD setup for reliable uptime. We've deployed and maintained government-grade infrastructure with 99.9% availability.</p>
-      <ul class="service-features">
-        <li>AWS EC2 setup & configuration</li>
-        <li>PM2 process management</li>
-        <li>cPanel / WHM administration</li>
-        <li>SSL, DNS & domain management</li>
-        <li>Automated backups & monitoring</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">AWS EC2</span>
-        <span class="tag">PM2</span>
-        <span class="tag">cPanel/WHM</span>
-        <span class="tag">Linux</span>
-      </div>
-    </div>
-
-    <div class="service-card reveal reveal-delay-6">
-      <div class="service-num">06</div>
-      <span class="service-icon">🔧</span>
-      <div class="service-name">Maintenance & Retainers</div>
-      <p class="service-desc">Ongoing website care packages so you never have to worry about your digital presence again. Monthly bug fixes, updates, speed monitoring, backups, and priority support with a dedicated account manager.</p>
-      <ul class="service-features">
-        <li>Monthly security updates</li>
-        <li>Performance monitoring & alerts</li>
-        <li>Bug fixes & minor feature additions</li>
-        <li>Weekly automated backups</li>
-        <li>Priority support & same-day response</li>
-      </ul>
-      <div class="service-tags">
-        <span class="tag">Monthly Plans</span>
-        <span class="tag">Bug Fixes</span>
-        <span class="tag">Monitoring</span>
-        <span class="tag">Backups</span>
-      </div>
-    </div>
-
   </div>
-</section>
+</header>
 
-<!-- ═══ PROCESS ═══ -->
-<section class="process" id="process">
-  <div class="section-label reveal">How We Work</div>
-  <div class="divider-line reveal"></div>
-  <h2 class="section-title reveal">Our Process</h2>
-  <p class="section-desc reveal reveal-delay-1">A clear, proven four-step process that keeps every project on track, on budget, and on time.</p>
-
-  <div class="process-steps">
-    <div class="process-step reveal reveal-delay-1">
-      <div class="process-step-num">01</div>
-      <span class="process-step-icon">💬</span>
-      <div class="process-step-title">Discovery Call</div>
-      <p class="process-step-desc">We start with a free 30-minute call to understand your goals, users, and technical requirements. No commitment needed — just an honest conversation.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="process-step-num">02</div>
-      <span class="process-step-icon">📋</span>
-      <div class="process-step-title">Scoping & Proposal</div>
-      <p class="process-step-desc">We send a detailed written proposal with timeline, tech stack, and fixed pricing. You'll know exactly what you're getting before signing anything.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="process-step-num">03</div>
-      <span class="process-step-icon">🛠️</span>
-      <div class="process-step-title">Build & Iterate</div>
-      <p class="process-step-desc">We build in sprints with regular check-ins and a shared staging environment so you can track progress and give feedback at every milestone.</p>
-    </div>
-    <div class="process-step reveal reveal-delay-4">
-      <div class="process-step-num">04</div>
-      <span class="process-step-icon">🚀</span>
-      <div class="process-step-title">Launch & Support</div>
-      <p class="process-step-desc">We handle deployment, go-live monitoring, and post-launch support. Your project doesn't end at launch — we're there when you need us.</p>
+<div class="mobile-menu">
+  <nav class="mobile-menu__links" aria-label="Mobile">
+    <a href="index.html"><span>Home</span></a>
+    <a href="services.html"><span>Services</span></a>
+    <a href="work.html"><span>Work</span></a>
+    <a href="about.html"><span>About</span></a>
+    <a href="contact.html"><span>Contact</span></a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a href="mailto:info@devmora.com">info@devmora.com</a>
+    <span>Greater Noida, India · Serving India &amp; UK</span>
+  </div>
+</div>
+<main>
+<section class="page-hero" id="top">
+  <div class="hero__bg">
+    <div class="grid-bg"></div>
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+  </div>
+  <div class="container">
+    <div class="breadcrumb fade-in"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><span>Services</span></div>
+    <div class="page-hero__grid">
+      <div>
+        <div class="eyebrow fade-in" style="margin-bottom:24px">What we offer</div>
+        <h1 class="display"><span class="line"><span>Services that</span></span><span class="line"><span><span class="serif grad-text">move</span> the needle.</span></span></h1>
+      </div>
+      <p class="lead fade-in d2">End-to-end digital solutions, from concept to deployment. We build fast, scalable and beautifully crafted products that grow your business.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ TECH STACK ═══ -->
-<section class="techstack" id="tech">
-  <div class="section-label reveal">Under the Hood</div>
-  <div class="divider-line reveal"></div>
-  <h2 class="section-title reveal">Our Tech Stack</h2>
-  <p class="section-desc reveal reveal-delay-1">Battle-tested, production-grade technologies that we've used to ship real-world projects for real clients.</p>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track"><span class="marquee__item">Web Development</span><span class="marquee__item">Mobile Apps</span><span class="marquee__item">E-Commerce</span><span class="marquee__item">SEO &amp; Performance</span><span class="marquee__item">Cloud Deployment</span><span class="marquee__item">Maintenance</span><span class="marquee__item">UI/UX Design</span><span class="marquee__item">API Integration</span><span class="marquee__item">Web Development</span><span class="marquee__item">Mobile Apps</span><span class="marquee__item">E-Commerce</span><span class="marquee__item">SEO &amp; Performance</span><span class="marquee__item">Cloud Deployment</span><span class="marquee__item">Maintenance</span><span class="marquee__item">UI/UX Design</span><span class="marquee__item">API Integration</span></div>
+</div>
 
-  <div class="tech-categories">
-    <div class="tech-category reveal reveal-delay-1">
-      <span class="tech-cat-icon">⚛️</span>
-      <div class="tech-cat-name">Frontend</div>
-      <div class="tech-pills">
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">Vite</span>
-        <span class="tech-pill">React Native</span>
-        <span class="tech-pill">JavaScript</span>
-        <span class="tech-pill">CSS / Tailwind</span>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-reveal>What we do</div>
+        <h2 class="h2" data-reveal>Six ways we help<br/>you <span class="serif grad-text">grow</span>.</h2>
+      </div>
+      <div class="section-head__side" data-reveal>
+        <p class="lead">Every service is delivered with full transparency and zero fluff, by the same people you talk to on day one.</p>
       </div>
     </div>
-    <div class="tech-category reveal reveal-delay-2">
-      <span class="tech-cat-icon">🟢</span>
-      <div class="tech-cat-name">Backend</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Node.js</span>
-        <span class="tech-pill">Express.js</span>
-        <span class="tech-pill">Sequelize ORM</span>
-        <span class="tech-pill">REST APIs</span>
-        <span class="tech-pill">PHP</span>
+    <div class="svc-list">
+      <article class="card svc" id="web" data-reveal>
+        <div class="svc__num">01</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3 class="h3">Web Development</h3>
+          <p>Custom websites and web applications built with modern React frontends and robust Node.js backends. We go beyond templates: every project is purpose-built for your users.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MySQL</span><span class="tag">REST APIs</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Responsive, mobile-first design</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>React + Node.js full-stack architecture</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>REST API development &amp; integration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Admin dashboard &amp; CMS panels</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>MySQL / PostgreSQL database design</li></ul>
+      </article>
+      <article class="card svc" id="ecommerce" data-reveal>
+        <div class="svc__num">02</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+          <h3 class="h3">E-Commerce Platforms</h3>
+          <p>End-to-end e-commerce solutions with vendor management, payment gateways, CDN-optimised images and custom admin dashboards. We've shipped platforms handling 1000+ products.</p>
+          <div class="tags"><span class="tag">Custom Builds</span><span class="tag">CCAvenue</span><span class="tag">Razorpay</span><span class="tag">Cloudinary</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Multi-vendor marketplace support</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CCAvenue / Razorpay / Stripe integration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cloudinary CDN image optimisation</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Vendor &amp; admin management panels</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Order tracking &amp; notification systems</li></ul>
+      </article>
+      <article class="card svc" id="mobile" data-reveal>
+        <div class="svc__num">03</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <h3 class="h3">Mobile App Development</h3>
+          <p>Cross-platform mobile applications designed for real users: buyer apps, service apps and enterprise tools. One codebase for iOS and Android, with native-quality performance.</p>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">iOS &amp; Android</span><span class="tag">APIs</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>React Native for iOS &amp; Android</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Backend API integration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Push notifications &amp; real-time updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>App Store &amp; Play Store deployment</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Offline-first capabilities</li></ul>
+      </article>
+      <article class="card svc" id="seo" data-reveal>
+        <div class="svc__num">04</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3 class="h3">SEO &amp; Speed Optimisation</h3>
+          <p>Technical SEO audits, schema markup, Core Web Vitals optimisation and Google Search Console management. We've achieved GTmetrix Grade A and grown organic traffic for UK clients.</p>
+          <div class="tags"><span class="tag">GTmetrix A</span><span class="tag">Schema</span><span class="tag">Sitemap</span><span class="tag">GSC</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Core Web Vitals &amp; GTmetrix Grade A</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Schema markup &amp; structured data</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>XML sitemaps &amp; robots.txt</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Search Console management</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Page speed &amp; image optimisation</li></ul>
+      </article>
+      <article class="card svc" id="cloud" data-reveal>
+        <div class="svc__num">05</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
+          <h3 class="h3">Server &amp; Cloud Deployment</h3>
+          <p>AWS EC2 deployments, PM2 process management, cPanel/WHM administration and CI/CD setup. We've deployed and maintained government-grade infrastructure with 99.9% availability.</p>
+          <div class="tags"><span class="tag">AWS EC2</span><span class="tag">PM2</span><span class="tag">cPanel/WHM</span><span class="tag">Linux</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AWS EC2 setup &amp; configuration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>PM2 process management</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>cPanel / WHM administration</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SSL, DNS &amp; domain management</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Automated backups &amp; monitoring</li></ul>
+      </article>
+      <article class="card svc" id="care" data-reveal>
+        <div class="svc__num">06</div>
+        <div class="svc__main">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3 class="h3">Maintenance &amp; Retainers</h3>
+          <p>Ongoing care packages so you never have to worry about your digital presence. Monthly bug fixes, updates, speed monitoring, backups and priority support.</p>
+          <div class="tags"><span class="tag">Monthly Plans</span><span class="tag">Bug Fixes</span><span class="tag">Monitoring</span><span class="tag">Backups</span></div>
+        </div>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly security updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Performance monitoring &amp; alerts</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bug fixes &amp; minor feature additions</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Weekly automated backups</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Priority support &amp; same-day response</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-reveal>How we work</div>
+        <h2 class="h2" data-reveal>Our <span class="serif grad-text">process</span></h2>
+      </div>
+      <div class="section-head__side" data-reveal>
+        <p class="lead">A clear, proven four-step process that keeps every project on track, on budget and on time.</p>
       </div>
     </div>
-    <div class="tech-category reveal reveal-delay-3">
-      <span class="tech-cat-icon">🗄️</span>
-      <div class="tech-cat-name">Databases</div>
-      <div class="tech-pills">
-        <span class="tech-pill">MySQL</span>
-        <span class="tech-pill">PostgreSQL</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">Redis</span>
+    <div class="process" data-track data-stagger="0.1">
+      <div class="process__line"><span></span></div>
+      <div class="step" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="step__num">Step 01</div>
+        <h3 class="h3">Discovery Call</h3>
+        <p>A free 30-minute call to understand your goals, users and technical requirements. No commitment, just an honest conversation.</p>
       </div>
-    </div>
-    <div class="tech-category reveal reveal-delay-4">
-      <span class="tech-cat-icon">☁️</span>
-      <div class="tech-cat-name">Cloud & DevOps</div>
-      <div class="tech-pills">
-        <span class="tech-pill">AWS EC2</span>
-        <span class="tech-pill">PM2</span>
-        <span class="tech-pill">cPanel/WHM</span>
-        <span class="tech-pill">Linux</span>
-        <span class="tech-pill">Nginx</span>
+      <div class="step" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></svg></div>
+        <div class="step__num">Step 02</div>
+        <h3 class="h3">Scoping &amp; Proposal</h3>
+        <p>A detailed written proposal with timeline, tech stack and fixed pricing. You'll know exactly what you're getting before signing.</p>
       </div>
-    </div>
-    <div class="tech-category reveal reveal-delay-5">
-      <span class="tech-cat-icon">💳</span>
-      <div class="tech-cat-name">Payments & Media</div>
-      <div class="tech-pills">
-        <span class="tech-pill">CCAvenue</span>
-        <span class="tech-pill">Razorpay</span>
-        <span class="tech-pill">Stripe</span>
-        <span class="tech-pill">Cloudinary</span>
+      <div class="step" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="step__num">Step 03</div>
+        <h3 class="h3">Build &amp; Iterate</h3>
+        <p>We build in sprints with regular check-ins and a shared staging environment, so you can give feedback at every milestone.</p>
       </div>
-    </div>
-    <div class="tech-category reveal reveal-delay-6">
-      <span class="tech-cat-icon">📊</span>
-      <div class="tech-cat-name">SEO & Analytics</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Google Search Console</span>
-        <span class="tech-pill">Schema Markup</span>
-        <span class="tech-pill">Leaflet.js</span>
-        <span class="tech-pill">GeoJSON</span>
-        <span class="tech-pill">GTmetrix</span>
+      <div class="step" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <div class="step__num">Step 04</div>
+        <h3 class="h3">Launch &amp; Support</h3>
+        <p>Deployment, go-live monitoring and post-launch support. Your project doesn't end at launch; we're there when you need us.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PRICING ═══ -->
-<section class="pricing" id="pricing">
-  <div class="section-label reveal">Transparent Pricing</div>
-  <div class="divider-line reveal"></div>
-  <h2 class="section-title reveal">Maintenance Plans</h2>
-  <p class="section-desc reveal reveal-delay-1">For one-off projects, pricing is scoped per project. For ongoing care, choose a retainer plan that fits your needs.</p>
-
-  <div class="pricing-grid">
-    <div class="pricing-card reveal reveal-delay-1">
-      <div class="pricing-name">Starter</div>
-      <div class="pricing-price">₹4,999</div>
-      <div class="pricing-period">/ month</div>
-      <p class="pricing-desc">For small businesses needing basic ongoing care and peace of mind.</p>
-      <ul class="pricing-features">
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Monthly security updates</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Weekly backups</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Up to 2 bug fixes/month</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Uptime monitoring</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Email support (48hr)</li>
-      </ul>
-      <a href="/contact" class="pricing-btn">Get Started</a>
+<section class="section" id="tech">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-reveal>Under the hood</div>
+        <h2 class="h2" data-reveal>Our tech <span class="serif grad-text">stack</span></h2>
+      </div>
+      <div class="section-head__side" data-reveal>
+        <p class="lead">Battle-tested, production-grade technologies we've used to ship real projects for real clients.</p>
+      </div>
     </div>
-
-    <div class="pricing-card featured reveal reveal-delay-2">
-      <div class="popular-badge">Most Popular</div>
-      <div class="pricing-name">Growth</div>
-      <div class="pricing-price">₹9,999</div>
-      <div class="pricing-period">/ month</div>
-      <p class="pricing-desc">For growing businesses that need regular updates and faster support.</p>
-      <ul class="pricing-features">
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Everything in Starter</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Up to 8 bug fixes/month</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Minor feature additions</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> SEO monitoring</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Priority support (24hr)</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Monthly performance report</li>
-      </ul>
-      <a href="/contact" class="pricing-btn">Get Started</a>
-    </div>
-
-    <div class="pricing-card reveal reveal-delay-3">
-      <div class="pricing-name">Enterprise</div>
-      <div class="pricing-price">Custom</div>
-      <div class="pricing-period">tailored to you</div>
-      <p class="pricing-desc">For large-scale platforms and teams needing dedicated engineering support.</p>
-      <ul class="pricing-features">
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Everything in Growth</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Unlimited requests</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Dedicated developer</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> SLA guarantee</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Same-day response</li>
-        <li class="pricing-feature"><span class="pricing-check">✓</span> Video calls & on-site support</li>
-      </ul>
-      <a href="/contact" class="pricing-btn">Contact Us</a>
+    <div class="grid-3" data-stagger>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div><h3 class="h3">Frontend</h3></div>
+        <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">React Native</span><span class="tag">JavaScript</span><span class="tag">CSS / Tailwind</span></div>
+      </div>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div><h3 class="h3">Backend</h3></div>
+        <div class="tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Sequelize ORM</span><span class="tag">REST APIs</span><span class="tag">PHP</span></div>
+      </div>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></div><h3 class="h3">Databases</h3></div>
+        <div class="tags"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span></div>
+      </div>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><h3 class="h3">Cloud &amp; DevOps</h3></div>
+        <div class="tags"><span class="tag">AWS EC2</span><span class="tag">PM2</span><span class="tag">cPanel/WHM</span><span class="tag">Linux</span><span class="tag">Nginx</span></div>
+      </div>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3 class="h3">Payments &amp; Media</h3></div>
+        <div class="tags"><span class="tag">CCAvenue</span><span class="tag">Razorpay</span><span class="tag">Stripe</span><span class="tag">Cloudinary</span></div>
+      </div>
+      <div class="card tech-card" data-reveal>
+        <div class="tech-card__head"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><h3 class="h3">SEO &amp; Analytics</h3></div>
+        <div class="tags"><span class="tag">Search Console</span><span class="tag">Schema Markup</span><span class="tag">Leaflet.js</span><span class="tag">GeoJSON</span><span class="tag">GTmetrix</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CTA ═══ -->
-<section class="cta-section">
-  <div class="cta-inner reveal">
-    <div class="cta-tag">Free Discovery Call</div>
-    <h2 class="cta-title">READY TO<br/><span>START?</span></h2>
-    <p class="cta-desc">Every great product starts with a conversation. Book a free 30-minute call and let's talk about what you're building.</p>
-    <div class="cta-btns">
-      <a href="/contact" class="btn-primary">Book a Free Call</a>
-      <a href="/about" class="btn-ghost">About Devmora</a>
+<section class="section section--alt" id="pricing">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow" data-reveal>Transparent pricing</div>
+      <h2 class="h2" data-reveal>Maintenance <span class="serif grad-text">plans</span></h2>
+      <p class="lead" data-reveal>One-off projects are scoped individually. For ongoing care, choose a retainer that fits your needs.</p>
+    </div>
+    <div class="pricing-grid" data-stagger="0.1">
+      <div class="card price-card" data-reveal>
+        <div class="price-card__head"><span class="price-card__name">Starter</span></div>
+        <div class="price">₹4,999<small>/ month</small></div>
+        <p>For small businesses needing basic ongoing care and peace of mind.</p>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly security updates</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Weekly backups</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 2 bug fixes / month</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Uptime monitoring</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Email support (48hr)</li></ul>
+        <a href="contact.html" class="btn btn-ghost">Get started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="card price-card price-card--featured" data-reveal>
+        <div class="price-card__head"><span class="price-card__name">Growth</span><span class="badge">Most popular</span></div>
+        <div class="price">₹9,999<small>/ month</small></div>
+        <p>For growing businesses that need regular updates and faster support.</p>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Starter</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 8 bug fixes / month</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Minor feature additions</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SEO monitoring</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Priority support (24hr)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly performance report</li></ul>
+        <a href="contact.html" class="btn btn-primary">Get started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+      <div class="card price-card" data-reveal>
+        <div class="price-card__head"><span class="price-card__name">Enterprise</span></div>
+        <div class="price">Custom<small>tailored to you</small></div>
+        <p>For large-scale platforms and teams needing dedicated engineering support.</p>
+        <ul class="check-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Growth</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited requests</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dedicated developer</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SLA guarantee</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same-day response</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Video calls &amp; on-site support</li></ul>
+        <a href="contact.html" class="btn btn-ghost">Contact us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <a href="/" class="footer-brand">DEVMORA <span>TECHNOLOGY</span></a>
-  <div class="footer-copy">© 2025 Devmora Technology. Greater Noida, India.</div>
-  <div class="footer-links">
-    <a href="/services">Services</a>
-    <a href="/about">About</a>
-    <a href="index.html#portfolio">Work</a>
-    <a href="/contact">Contact</a>
+<div style="height:clamp(90px,12vw,150px)"></div>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta" data-reveal="scale">
+      <div class="eyebrow">Free discovery call</div>
+      <h2 class="h2">Ready to <span class='serif'>start?</span></h2>
+      <p class="lead">Every great product starts with a conversation. Book a free 30-minute call and let's talk about what you're building.</p>
+      <div class="cta__btns">
+        <a href="contact.html" class="btn btn-primary" data-magnetic>Book a free call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a href="about.html" class="btn btn-ghost">About Devmora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__about">
+        <a href="index.html" class="brand"><span class="brand__mark">D</span><span>Devmora<small>.tech</small></span></a>
+        <p>A full-stack web &amp; app development agency from Greater Noida, building fast, scalable products for clients across India and the UK.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="services.html#web">Web Development</a>
+        <a href="services.html#ecommerce">E-Commerce</a>
+        <a href="services.html#mobile">Mobile Apps</a>
+        <a href="services.html#seo">SEO &amp; Speed</a>
+      </div>
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <a href="mailto:info@devmora.com">info@devmora.com</a>
+        <a href="https://wa.me/918796937376" target="_blank" rel="noopener">+91 8796937376</a>
+        <a href="https://www.linkedin.com/company/devmora-technology" target="_blank" rel="noopener">LinkedIn</a>
+        <span>Greater Noida, UP, India</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer__word" aria-hidden="true">devmora</div>
+  <div class="container">
+    <div class="footer__bottom">
+      <span>© <span data-year>2025</span> Devmora Technology. All rights reserved.</span>
+      <a href="#top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+    </div>
   </div>
 </footer>
 
-<script>
-  /* ── Navbar ── */
-  const navbar = document.getElementById('navbar');
-  let lastY = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 40);
-    navbar.classList.toggle('hidden', y > lastY + 8 && y > 120);
-    if (y < lastY - 8) navbar.classList.remove('hidden');
-    lastY = y;
-  }, { passive: true });
-
-  /* ── Cursor glow ── */
-  const glow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
-  });
-
-  /* ── Scroll reveal ── */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

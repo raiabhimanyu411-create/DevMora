@@ -3,1228 +3,334 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Top Web Development Company in India | React, Node.js & AWS Experts - Devmora Technology</title>
-
-<meta name="description" content="Devmora Technology - Leading web development company in India. Expert React, Node.js developers building scalable web applications, e-commerce platforms & cloud solutions. Serving UK & international clients since 2021.">
-<meta name="keywords" content="web development company India, React development services, Node.js developers India, AWS cloud solutions, full stack development agency, custom web applications, e-commerce development, API development, Greater Noida web company">
-<meta name="author" content="Devmora Technology">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://devmoratech.com/">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Devmora Technology - Premier Web Development Company in India">
-<meta property="og:description" content="Expert React, Node.js & AWS development services. Building scalable web applications for businesses worldwide.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://devmoratech.com/">
-<meta property="og:image" content="https://devmoratech.com/og-image.jpg">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Devmora Technology - Web Development Company India">
-<meta name="twitter:description" content="Expert React, Node.js & AWS development services for scalable web applications.">
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-
-<style>
-
-/* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* ===== ROOT VARIABLES ===== */
-:root{
---primary:#6366f1;
---primary-dark:#4f46e5;
---secondary:#8b5cf6;
---bg:#ffffff;
---bg-alt:#f8fafc;
---text:#0f172a;
---text-light:#475569;
---text-muted:#64748b;
---border:#e2e8f0;
---card:#ffffff;
---shadow:0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
---shadow-lg:0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-}
-
-/* ===== TYPOGRAPHY ===== */
-body{
-font-family:'Inter',sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.7;
-font-size:16px;
-}
-
-h1,h2,h3,h4,h5,h6{
-font-family:'Space Grotesk',sans-serif;
-font-weight:700;
-line-height:1.2;
-color:var(--text);
-}
-
-h1{font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1.5rem}
-h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.25rem}
-h3{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:1rem}
-h4{font-size:1.25rem;margin-bottom:0.75rem}
-
-p{
-color:var(--text-light);
-margin-bottom:1.25rem;
-max-width:65ch;
-}
-
-/* ===== LAYOUT ===== */
-.container{
-max-width:1200px;
-margin:0 auto;
-padding:0 2rem;
-}
-
-.section{
-padding:5rem 0;
-}
-
-.section-alt{
-background:var(--bg-alt);
-}
-
-/* ===== HEADER ===== */
-header{
-position:sticky;
-top:0;
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
-z-index:1000;
-padding:1rem 0;
-}
-
-.header-content{
-max-width:1200px;
-margin:0 auto;
-padding:0 2rem;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:1.5rem;
-font-weight:800;
-color:var(--primary);
-text-decoration:none;
-font-family:'Space Grotesk',sans-serif;
-}
-
-nav a{
-margin-left:2rem;
-color:var(--text);
-text-decoration:none;
-font-weight:500;
-transition:color 0.3s;
-}
-
-nav a:hover{
-color:var(--primary);
-}
-
-/* ===== HERO ===== */
-.hero{
-padding:8rem 0 6rem;
-background:linear-gradient(135deg,#f8fafc 0%,#e0e7ff 100%);
-position:relative;
-overflow:hidden;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-top:-50%;
-right:-20%;
-width:600px;
-height:600px;
-background:radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 70%);
-border-radius:50%;
-}
-
-.hero-content{
-position:relative;
-z-index:1;
-}
-
-.hero h1{
-background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-background-clip:text;
-margin-bottom:1.5rem;
-}
-
-.hero .lead{
-font-size:1.25rem;
-color:var(--text-light);
-margin-bottom:2rem;
-max-width:700px;
-}
-
-.hero-stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:2rem;
-margin-top:3rem;
-}
-
-.stat-item{
-text-align:center;
-}
-
-.stat-number{
-font-size:2.5rem;
-font-weight:800;
-color:var(--primary);
-font-family:'Space Grotesk',sans-serif;
-}
-
-.stat-label{
-color:var(--text-muted);
-font-size:0.875rem;
-text-transform:uppercase;
-letter-spacing:0.05em;
-}
-
-/* ===== BUTTONS ===== */
-.btn{
-display:inline-block;
-padding:0.875rem 2rem;
-border-radius:0.5rem;
-text-decoration:none;
-font-weight:600;
-transition:all 0.3s;
-border:2px solid transparent;
-cursor:pointer;
-}
-
-.btn-primary{
-background:var(--primary);
-color:#fff;
-}
-
-.btn-primary:hover{
-background:var(--primary-dark);
-transform:translateY(-2px);
-box-shadow:var(--shadow-lg);
-}
-
-.btn-outline{
-border:2px solid var(--primary);
-color:var(--primary);
-background:transparent;
-margin-left:1rem;
-}
-
-.btn-outline:hover{
-background:var(--primary);
-color:#fff;
-}
-
-/* ===== SERVICES ===== */
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:2rem;
-margin-top:3rem;
-}
-
-.service-card{
-background:var(--card);
-padding:2rem;
-border-radius:1rem;
-border:1px solid var(--border);
-transition:all 0.3s;
-position:relative;
-overflow:hidden;
-}
-
-.service-card::before{
-content:'';
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:4px;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
-transform:scaleX(0);
-transition:transform 0.3s;
-}
-
-.service-card:hover{
-box-shadow:var(--shadow-lg);
-transform:translateY(-5px);
-}
-
-.service-card:hover::before{
-transform:scaleX(1);
-}
-
-.service-icon{
-width:60px;
-height:60px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-border-radius:1rem;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.5rem;
-color:#fff;
-margin-bottom:1.5rem;
-}
-
-.service-card h3{
-color:var(--text);
-margin-bottom:1rem;
-}
-
-.service-card p{
-color:var(--text-light);
-font-size:0.95rem;
-margin-bottom:1.5rem;
-}
-
-.service-card ul{
-list-style:none;
-padding:0;
-}
-
-.service-card li{
-padding:0.5rem 0;
-color:var(--text-muted);
-position:relative;
-padding-left:1.5rem;
-}
-
-.service-card li::before{
-content:'✓';
-position:absolute;
-left:0;
-color:var(--primary);
-font-weight:700;
-}
-
-/* ===== TECH STACK ===== */
-.tech-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:1.5rem;
-margin-top:3rem;
-}
-
-.tech-item{
-background:var(--card);
-padding:1.5rem;
-border-radius:0.75rem;
-text-align:center;
-border:1px solid var(--border);
-transition:all 0.3s;
-}
-
-.tech-item:hover{
-border-color:var(--primary);
-box-shadow:var(--shadow);
-}
-
-.tech-item img{
-width:50px;
-height:50px;
-margin-bottom:0.75rem;
-}
-
-.tech-item span{
-display:block;
-font-weight:600;
-color:var(--text);
-font-size:0.9rem;
-}
-
-/* ===== PROCESS ===== */
-.process-steps{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:2rem;
-margin-top:3rem;
-position:relative;
-}
-
-.process-step{
-text-align:center;
-position:relative;
-}
-
-.step-number{
-width:60px;
-height:60px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:#fff;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.5rem;
-font-weight:800;
-margin:0 auto 1.5rem;
-font-family:'Space Grotesk',sans-serif;
-}
-
-.process-step h4{
-margin-bottom:0.75rem;
-}
-
-.process-step p{
-margin:0 auto;
-font-size:0.95rem;
-}
-
-/* ===== WHY CHOOSE ===== */
-.features-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:2rem;
-margin-top:3rem;
-}
-
-.feature-card{
-background:var(--card);
-padding:2rem;
-border-radius:1rem;
-border:1px solid var(--border);
-}
-
-.feature-icon{
-font-size:2rem;
-margin-bottom:1rem;
-}
-
-.feature-card h4{
-color:var(--text);
-margin-bottom:0.75rem;
-}
-
-.feature-card p{
-color:var(--text-light);
-font-size:0.95rem;
-margin:0;
-}
-
-/* ===== PORTFOLIO ===== */
-.portfolio-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:2rem;
-margin-top:3rem;
-}
-
-.portfolio-card{
-background:var(--card);
-border-radius:1rem;
-overflow:hidden;
-border:1px solid var(--border);
-transition:all 0.3s;
-}
-
-.portfolio-card:hover{
-box-shadow:var(--shadow-lg);
-transform:translateY(-5px);
-}
-
-.portfolio-img{
-width:100%;
-height:200px;
-background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-size:2rem;
-font-weight:700;
-}
-
-.portfolio-content{
-padding:1.5rem;
-}
-
-.portfolio-content h4{
-margin-bottom:0.75rem;
-}
-
-.portfolio-content p{
-font-size:0.9rem;
-margin-bottom:1rem;
-}
-
-.portfolio-tags{
-display:flex;
-flex-wrap:wrap;
-gap:0.5rem;
-}
-
-.tag{
-background:var(--bg-alt);
-color:var(--primary);
-padding:0.25rem 0.75rem;
-border-radius:0.25rem;
-font-size:0.8rem;
-font-weight:500;
-}
-
-/* ===== CTA ===== */
-.cta-section{
-background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);
-color:#fff;
-text-align:center;
-padding:5rem 0;
-}
-
-.cta-section h2{
-color:#fff;
-margin-bottom:1rem;
-}
-
-.cta-section p{
-color:rgba(255,255,255,0.9);
-margin:0 auto 2rem;
-font-size:1.125rem;
-}
-
-.cta-section .btn{
-background:#fff;
-color:var(--primary);
-}
-
-.cta-section .btn:hover{
-background:var(--bg-alt);
-transform:translateY(-2px);
-}
-
-/* ===== FOOTER ===== */
-footer{
-background:var(--text);
-color:#fff;
-padding:3rem 0 1.5rem;
-}
-
-.footer-content{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:2rem;
-margin-bottom:2rem;
-}
-
-.footer-section h4{
-color:#fff;
-margin-bottom:1rem;
-font-size:1.125rem;
-}
-
-.footer-section p,
-.footer-section a{
-color:rgba(255,255,255,0.7);
-text-decoration:none;
-display:block;
-margin-bottom:0.5rem;
-font-size:0.95rem;
-}
-
-.footer-section a:hover{
-color:#fff;
-}
-
-.footer-bottom{
-border-top:1px solid rgba(255,255,255,0.1);
-padding-top:1.5rem;
-text-align:center;
-color:rgba(255,255,255,0.5);
-font-size:0.875rem;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-.container{padding:0 1.5rem}
-.section{padding:3rem 0}
-.hero{padding:5rem 0 3rem}
-nav{display:none}
-.btn-outline{margin-left:0;margin-top:1rem}
-h1{font-size:2.5rem}
-h2{font-size:2rem}
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-.fade-in{
-animation:fadeInUp 0.6s ease-out;
-}
-
-</style>
-
-<!-- Enhanced Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Devmora Technology",
-  "alternateName": "Devmora",
-  "url": "https://devmoratech.com",
-  "logo": "https://devmoratech.com/logo.png",
-  "description": "Leading web development company in India specializing in React, Node.js, and AWS cloud solutions. Building scalable web applications for businesses worldwide since 2024.",
-  "foundingDate": "2024",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Greater Noida",
-    "addressLocality": "Greater Noida",
-    "addressRegion": "Uttar Pradesh",
-    "addressCountry": "India"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Customer Service",
-    "availableLanguage": ["English", "Hindi"]
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/devmora-technology"
-  ],
-  "serviceArea": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": "28.4744",
-      "longitude": "77.5040"
-    },
-    "geoRadius": "50000"
-  },
-  "areaServed": ["IN", "GB", "US", "CA", "AU"],
-  "knowsAbout": ["Web Development", "React Development", "Node.js", "AWS Cloud", "E-commerce Development", "API Development"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Web Development Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Full Stack Web Development",
-          "description": "Custom web application development using React and Node.js"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "AWS Cloud Solutions",
-          "description": "Cloud infrastructure setup and deployment on AWS"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "E-commerce Development",
-          "description": "Scalable online store and marketplace development"
-        }
-      }
-    ]
-  }
-}
-</script>
-
-<!-- Professional Services Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Devmora Technology - Web Development Company",
-  "image": "https://devmoratech.com/logo.png",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Greater Noida",
-    "addressCountry": "India"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "12"
-  }
-}
-</script>
-
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header>
-<div class="header-content">
-<a href="/" class="logo">Devmora</a>
-<nav>
-<a href="#services">Services</a>
-<a href="#tech">Technology</a>
-<a href="#process">Process</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#contact">Contact</a>
-</nav>
+<title>Top Web Development Company in India | React, Node.js &amp; AWS Experts - Devmora Technology</title>
+<meta name="description" content="Devmora Technology - Leading web development company in India. Expert React, Node.js developers building scalable web applications, e-commerce platforms &amp; cloud solutions. Serving UK &amp; international clients since 2021."/>
+<meta name="keywords" content="web development company India, React development services, Node.js developers India, AWS cloud solutions, full stack development agency, custom web applications, e-commerce development, API development, Greater Noida web company"/>
+<meta name="author" content="Devmora Technology"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<link rel="canonical" href="https://devmoratech.com/about"/>
+<meta name="theme-color" content="#08080b"/>
+<meta name="geo.region" content="IN-UP"/>
+<meta name="geo.placename" content="Greater Noida"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Devmora Technology"/>
+<meta property="og:title" content="Top Web Development Company in India | React, Node.js &amp; AWS Experts - Devmora Technology"/>
+<meta property="og:description" content="Devmora Technology - Leading web development company in India. Expert React, Node.js developers building scalable web applications, e-commerce platforms &amp; cloud solutions. Serving UK &amp; international clients since 2021."/>
+<meta property="og:url" content="https://devmoratech.com/about"/>
+<meta property="og:image" content="https://devmoratech.com/favicon.png"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Top Web Development Company in India | React, Node.js &amp; AWS Experts - Devmora Technology"/>
+<meta name="twitter:description" content="Devmora Technology - Leading web development company in India. Expert React, Node.js developers building scalable web applications, e-commerce platforms &amp; cloud solutions. Serving UK &amp; international clients since 2021."/>
+<meta name="twitter:image" content="https://devmoratech.com/favicon.png"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+
+</head><body data-page="about">
+
+<div class="curtain" aria-hidden="true">
+  <div class="curtain__inner">
+    <div class="curtain__word"><span>devmora</span><span style="animation-delay:.12s"><i>.</i></span></div>
+  </div>
 </div>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container">
+    <div class="nav__bar">
+      <a href="index.html" class="brand" aria-label="Devmora Technology home">
+        <span class="brand__mark">D</span>
+        <span>Devmora<small>.tech</small></span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="services.html" class="nav__link" data-nav="services">Services</a>
+        <a href="work.html" class="nav__link" data-nav="work">Work</a>
+        <a href="about.html" class="nav__link" data-nav="about">About</a>
+        <a href="contact.html" class="nav__link" data-nav="contact">Contact</a>
+      </nav>
+      <div class="nav__right">
+        <a href="contact.html" class="btn btn-primary btn-sm" data-magnetic>Start a project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-<div class="container">
-<div class="hero-content fade-in">
-<h1>Leading Web Development Company in India</h1>
-<p class="lead">
-Devmora Technology delivers enterprise-grade web applications using React, Node.js, and AWS. 
-We transform your ideas into scalable digital solutions that drive business growth.
-</p>
-<div>
-<a href="#contact" class="btn btn-primary">Start Your Project</a>
-<a href="#portfolio" class="btn btn-outline">View Our Work</a>
+<div class="mobile-menu">
+  <nav class="mobile-menu__links" aria-label="Mobile">
+    <a href="index.html"><span>Home</span></a>
+    <a href="services.html"><span>Services</span></a>
+    <a href="work.html"><span>Work</span></a>
+    <a href="about.html"><span>About</span></a>
+    <a href="contact.html"><span>Contact</span></a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a href="mailto:info@devmora.com">info@devmora.com</a>
+    <span>Greater Noida, India · Serving India &amp; UK</span>
+  </div>
 </div>
-
-<div class="hero-stats">
-<div class="stat-item">
-<div class="stat-number">15+</div>
-<div class="stat-label">Projects Delivered</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">10+</div>
-<div class="stat-label">Happy Clients</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">2+</div>
-<div class="stat-label">Years Experience</div>
-</div>
-<div class="stat-item">
-<div class="stat-number">100%</div>
-<div class="stat-label">Client Satisfaction</div>
-</div>
-</div>
-</div>
-</div>
+<main>
+<section class="page-hero" id="top">
+  <div class="hero__bg">
+    <div class="grid-bg"></div>
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+  </div>
+  <div class="container">
+    <div class="breadcrumb fade-in"><a href="index.html">Home</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><span>About</span></div>
+    <div class="page-hero__grid">
+      <div>
+        <div class="eyebrow fade-in" style="margin-bottom:24px">Our story</div>
+        <h1 class="display"><span class="line"><span>Builders, thinkers,</span></span><span class="line"><span><span class="serif grad-text">problem-solvers.</span></span></span></h1>
+      </div>
+      <p class="lead fade-in d2">We don't just write code. We craft digital experiences that move businesses forward, for startups, SMEs, UK businesses and government bodies.</p>
+    </div>
+  </div>
 </section>
 
-<!-- SERVICES SECTION -->
-<section class="section" id="services">
-<div class="container">
-<h2>Comprehensive Web Development Services in India</h2>
-<p>
-We offer end-to-end web development solutions tailored to your business needs. 
-From concept to deployment, our expert team delivers high-performance applications.
-</p>
-
-<div class="services-grid">
-<div class="service-card">
-<div class="service-icon">⚛️</div>
-<h3>React.js Development</h3>
-<p>Build lightning-fast, interactive user interfaces with React. We create component-based architectures that scale with your business.</p>
-<ul>
-<li>Single Page Applications (SPAs)</li>
-<li>Progressive Web Apps (PWAs)</li>
-<li>React Hooks & Context API</li>
-<li>Redux State Management</li>
-<li>Server-Side Rendering (Next.js)</li>
-</ul>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track"><span class="marquee__item">Greater Noida, India</span><span class="marquee__item">UK Clients</span><span class="marquee__item">Full-Stack Agency</span><span class="marquee__item">3+ Years Building</span><span class="marquee__item">20+ Projects Delivered</span><span class="marquee__item">100% Client Retention</span><span class="marquee__item">React &amp; Node.js Specialists</span><span class="marquee__item">AWS Cloud Deployments</span><span class="marquee__item">Greater Noida, India</span><span class="marquee__item">UK Clients</span><span class="marquee__item">Full-Stack Agency</span><span class="marquee__item">3+ Years Building</span><span class="marquee__item">20+ Projects Delivered</span><span class="marquee__item">100% Client Retention</span><span class="marquee__item">React &amp; Node.js Specialists</span><span class="marquee__item">AWS Cloud Deployments</span></div>
 </div>
 
-<div class="service-card">
-<div class="service-icon">🚀</div>
-<h3>Node.js Backend Development</h3>
-<p>Robust, scalable server-side solutions using Node.js and Express. We build RESTful APIs and microservices architecture.</p>
-<ul>
-<li>RESTful API Development</li>
-<li>Express.js Framework</li>
-<li>Database Integration (MySQL, MongoDB)</li>
-<li>Authentication & Authorization</li>
-<li>Real-time Applications (Socket.io)</li>
-</ul>
-</div>
-
-<div class="service-card">
-<div class="service-icon">☁️</div>
-<h3>AWS Cloud Solutions</h3>
-<p>Deploy and manage your applications on AWS infrastructure. We ensure reliability, scalability, and cost-efficiency.</p>
-<ul>
-<li>EC2 Instance Setup & Management</li>
-<li>S3 Storage Solutions</li>
-<li>RDS Database Services</li>
-<li>CloudFront CDN Integration</li>
-<li>Load Balancing & Auto-Scaling</li>
-</ul>
-</div>
-
-<div class="service-card">
-<div class="service-icon">🛒</div>
-<h3>E-commerce Development</h3>
-<p>Complete e-commerce solutions from online stores to multi-vendor marketplaces. Secure payment integration and inventory management.</p>
-<ul>
-<li>Custom Shopping Cart Development</li>
-<li>Payment Gateway Integration</li>
-<li>Product Management Systems</li>
-<li>Order & Inventory Tracking</li>
-<li>Shopify Custom Development</li>
-</ul>
-</div>
-
-<div class="service-card">
-<div class="service-icon">📱</div>
-<h3>Responsive Web Design</h3>
-<p>Mobile-first, responsive websites that look perfect on all devices. Focus on user experience and conversion optimization.</p>
-<ul>
-<li>Mobile-First Approach</li>
-<li>Cross-Browser Compatibility</li>
-<li>UI/UX Design</li>
-<li>Performance Optimization</li>
-<li>Accessibility Standards (WCAG)</li>
-</ul>
-</div>
-
-<div class="service-card">
-<div class="service-icon">🔧</div>
-<h3>API Development & Integration</h3>
-<p>Custom API development and third-party integrations. Connect your systems seamlessly with modern API architecture.</p>
-<ul>
-<li>RESTful API Design</li>
-<li>GraphQL Implementation</li>
-<li>Third-Party API Integration</li>
-<li>API Documentation (Swagger)</li>
-<li>Webhook Development</li>
-</ul>
-</div>
-</div>
-</div>
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="stats-band" data-reveal>
+      <div class="stat"><div class="stat__num"><span data-count="20">20</span><em>+</em></div><div class="stat__label">Projects delivered</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="3">3</span><em>+</em></div><div class="stat__label">Years of experience</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="15">15</span><em>+</em></div><div class="stat__label">Happy clients</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="100">100</span><em>%</em></div><div class="stat__label">Client retention</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- TECH STACK SECTION -->
-<section class="section section-alt" id="tech">
-<div class="container">
-<h2>Our Technology Stack</h2>
-<p>We work with cutting-edge technologies to build modern, scalable web applications that meet industry standards.</p>
-
-<div class="tech-grid">
-<div class="tech-item">
-<div style="font-size:50px">⚛️</div>
-<span>React.js</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🟢</div>
-<span>Node.js</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🔷</div>
-<span>TypeScript</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">⚡</div>
-<span>Express.js</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🗄️</div>
-<span>MySQL</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🍃</div>
-<span>MongoDB</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">☁️</div>
-<span>AWS</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🐘</div>
-<span>PHP</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🅰️</div>
-<span>Angular</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🛍️</div>
-<span>Shopify</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🗺️</div>
-<span>Leaflet.js</span>
-</div>
-<div class="tech-item">
-<div style="font-size:50px">🔄</div>
-<span>Sequelize</span>
-</div>
-</div>
-</div>
+<section class="section" id="story">
+  <div class="container split">
+    <div>
+      <div class="eyebrow" data-reveal style="margin-bottom:22px">Our origin</div>
+      <h2 class="h2" data-reveal>Great software shouldn't need a <span class="serif grad-text">big budget.</span></h2>
+      <p class="lead" data-reveal style="margin-top:24px">Devmora Technology was born from a simple belief. We're a full-stack web and mobile development agency headquartered in Greater Noida, Uttar Pradesh, serving clients across India and the United Kingdom.</p>
+      <ul class="feature-list" data-stagger>
+        <li data-reveal><b>01</b>React + Node.js specialists with 3+ years of production experience</li>
+        <li data-reveal><b>02</b>Delivered government portals on AWS with payment gateway integration</li>
+        <li data-reveal><b>03</b>Worked with UK commercial clients on SEO, speed &amp; web retainers</li>
+        <li data-reveal><b>04</b>End-to-end ownership, from design to deployment to maintenance</li>
+        <li data-reveal><b>05</b>Transparent communication, deadline-focused, zero fluff</li>
+      </ul>
+    </div>
+    <div class="visual-box" data-reveal="scale">
+      <div class="pill float-chip float-chip--a"><span class="live-dot"></span>Accepting projects</div>
+      <div class="visual-box__mono">dm.</div>
+      <div class="pill float-chip float-chip--b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> India · United Kingdom</div>
+      <div class="visual-box__foot">
+        <span class="badge" style="width:fit-content">Est. 2021</span>
+        <p>Greater Noida, Uttar Pradesh, India.<br/>Serving clients across India &amp; the United Kingdom.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PROCESS SECTION -->
-<section class="section" id="process">
-<div class="container">
-<h2>Our Web Development Process</h2>
-<p>We follow a proven, agile development methodology to deliver projects on time and within budget.</p>
-
-<div class="process-steps">
-<div class="process-step">
-<div class="step-number">1</div>
-<h4>Discovery & Planning</h4>
-<p>We understand your business goals, target audience, and project requirements through detailed consultation.</p>
-</div>
-
-<div class="process-step">
-<div class="step-number">2</div>
-<h4>Design & Prototyping</h4>
-<p>Creating wireframes and interactive prototypes to visualize the user experience before development.</p>
-</div>
-
-<div class="process-step">
-<div class="step-number">3</div>
-<h4>Development</h4>
-<p>Agile development with regular updates. We build scalable, secure code following best practices.</p>
-</div>
-
-<div class="process-step">
-<div class="step-number">4</div>
-<h4>Testing & QA</h4>
-<p>Comprehensive testing across devices and browsers to ensure bug-free, high-performance delivery.</p>
-</div>
-
-<div class="process-step">
-<div class="step-number">5</div>
-<h4>Deployment</h4>
-<p>Seamless deployment to production servers with monitoring and optimization for peak performance.</p>
-</div>
-
-<div class="process-step">
-<div class="step-number">6</div>
-<h4>Support & Maintenance</h4>
-<p>Ongoing support, updates, and maintenance to keep your application running smoothly.</p>
-</div>
-</div>
-</div>
+<section class="section section--alt" id="values">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-reveal>What drives us</div>
+        <h2 class="h2" data-reveal>Our core <span class="serif grad-text">values</span></h2>
+      </div>
+      <div class="section-head__side" data-reveal>
+        <p class="lead">The principles that guide every line of code and every client conversation.</p>
+      </div>
+    </div>
+    <div class="grid-3" data-stagger>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3 class="h3">Results first</h3>
+        <p>We don't measure success by lines of code or hours billed. We measure it by the impact our work has on your business and your users.</p>
+      </div>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3 class="h3">Radical transparency</h3>
+        <p>No hidden costs, no jargon, no surprises. You'll always know what we're building, why, and when.</p>
+      </div>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 class="h3">Speed without sacrifice</h3>
+        <p>We move fast but never cut corners. Every deadline we commit to is one we meet, without compromising quality or security.</p>
+      </div>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7l10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+        <h3 class="h3">Built to scale</h3>
+        <p>We architect every project with growth in mind. What we build today should still perform when your traffic grows 10x.</p>
+      </div>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="h3">True partnership</h3>
+        <p>We're partners, not vendors. We invest in understanding your domain, users and goals before writing a single line of code.</p>
+      </div>
+      <div class="card value-card" data-reveal>
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+        <h3 class="h3">Global mindset</h3>
+        <p>Based in India, thinking globally. We've delivered for UK clients, government bodies and startups, adapting to every context.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="section section-alt">
-<div class="container">
-<h2>Why Choose Devmora Technology as Your Web Development Partner?</h2>
-<p>We combine technical expertise with business understanding to deliver solutions that drive real results.</p>
-
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon">🎯</div>
-<h4>Business-Focused Development</h4>
-<p>We don't just write code—we solve business problems. Every solution is designed to drive growth and ROI.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">⚡</div>
-<h4>Fast & Reliable Delivery</h4>
-<p>Agile methodology ensures quick iterations and on-time delivery without compromising quality.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">🔒</div>
-<h4>Security First</h4>
-<p>We implement industry-standard security practices to protect your data and your users.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">💰</div>
-<h4>Cost-Effective Solutions</h4>
-<p>Competitive pricing from India without compromising quality. Get enterprise-grade solutions at startup prices.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">🌍</div>
-<h4>Global Experience</h4>
-<p>Serving clients across UK, USA, Canada, and India. We understand international business requirements.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">📞</div>
-<h4>Clear Communication</h4>
-<p>Regular updates, transparent processes, and direct access to developers. No surprises, just results.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">🔧</div>
-<h4>Modern Tech Stack</h4>
-<p>We use the latest technologies and frameworks to build future-proof applications.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">📈</div>
-<h4>Scalable Architecture</h4>
-<p>Build once, scale forever. Our solutions grow with your business needs.</p>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon">🎨</div>
-<h4>Custom Solutions</h4>
-<p>No templates, no shortcuts. Every project is custom-built for your specific requirements.</p>
-</div>
-</div>
-</div>
+<section class="section" id="team">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-reveal>The people</div>
+        <h2 class="h2" data-reveal>Meet the <span class="serif grad-text">team</span></h2>
+      </div>
+      <div class="section-head__side" data-reveal>
+        <p class="lead">Small team, big ambitions. Every person here is a specialist who cares deeply about the craft.</p>
+      </div>
+    </div>
+    <div class="grid-3" data-stagger="0.1">
+      <article class="card team-card" data-reveal>
+        <div class="team-card__media" style="--c:rgba(123,108,255,.45)"><div class="avatar">AR</div></div>
+        <div class="team-card__body">
+          <div class="team-card__role">Founder &amp; Lead Developer</div>
+          <h3 class="h3">Abhimanyu Rai</h3>
+          <p>Full-stack developer with 3+ years building production-grade applications. Specialises in React, Node.js and AWS, and has shipped everything from government data portals to UK commercial websites.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">AWS</span><span class="tag">MySQL</span><span class="tag">React Native</span></div>
+        </div>
+      </article>
+      <article class="card team-card" data-reveal>
+        <div class="team-card__media" style="--c:rgba(255,143,177,.4)"><div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.59 7.59"/><circle cx="11" cy="11" r="2"/></svg></div></div>
+        <div class="team-card__body">
+          <div class="team-card__role">UI/UX &amp; Frontend</div>
+          <h3 class="h3">Design Team</h3>
+          <p>Turns wireframes into pixel-perfect, animated interfaces. Obsessed with user flows, micro-interactions and experiences that feel effortless for every kind of user.</p>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">UI Design</span><span class="tag">Animations</span><span class="tag">Accessibility</span></div>
+        </div>
+      </article>
+      <article class="card team-card" data-reveal>
+        <div class="team-card__media" style="--c:rgba(61,214,198,.4)"><div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div></div>
+        <div class="team-card__body">
+          <div class="team-card__role">DevOps &amp; Infrastructure</div>
+          <h3 class="h3">Infrastructure Team</h3>
+          <p>Owns deployment pipelines, server configuration and cloud infrastructure, so every project we ship is fast, secure and monitored with 99.9% uptime.</p>
+          <div class="tags"><span class="tag">AWS EC2</span><span class="tag">PM2</span><span class="tag">Linux</span><span class="tag">cPanel/WHM</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- PORTFOLIO SECTION -->
-<section class="section" id="portfolio">
-<div class="container">
-<h2>Our Web Development Portfolio</h2>
-<p>Explore some of our successful projects across different industries and technologies.</p>
-
-<div class="portfolio-grid">
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#06b6d4 0%,#3b82f6 100%)">Aspire Dental</div>
-<div class="portfolio-content">
-<h4>Aspire Dental Canada - Professional Dental Clinic Website</h4>
-<p>Modern, responsive website for Canadian dental clinic with appointment booking, service showcase, and patient information management.</p>
-<div class="portfolio-tags">
-<span class="tag">React</span>
-<span class="tag">Responsive</span>
-<span class="tag">Healthcare</span>
-<span class="tag">SEO</span>
-</div>
-</div>
-</div>
-
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)">Sellaids</div>
-<div class="portfolio-content">
-<h4>Sellaids - Multi-Vendor E-commerce Platform</h4>
-<p>Full-featured marketplace with vendor management, product listings, order processing, payment integration, and real-time analytics.</p>
-<div class="portfolio-tags">
-<span class="tag">React</span>
-<span class="tag">Vite</span>
-<span class="tag">Node.js</span>
-<span class="tag">MySQL</span>
-<span class="tag">Cloudinary</span>
-</div>
-</div>
-</div>
-
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)">BRIT Commercial</div>
-<div class="portfolio-content">
-<h4>BRIT Commercials - UK Truck Dealership</h4>
-<p>Professional website for UK-based HGV dealer with inventory management, SEO optimization, and responsive design.</p>
-<div class="portfolio-tags">
-<span class="tag">PHP</span>
-<span class="tag">MySQL</span>
-<span class="tag">SEO</span>
-<span class="tag">Schema Markup</span>
-</div>
-</div>
-</div>
-
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#fa709a 0%,#fee140 100%)">Pixeleyes</div>
-<div class="portfolio-content">
-<h4>Pixeleyes - Children's Eye Health Supplement</h4>
-<p>Professional Shopify store for pharmaceutical brand with custom Liquid templates and optimized checkout experience.</p>
-<div class="portfolio-tags">
-<span class="tag">Shopify</span>
-<span class="tag">Liquid</span>
-<span class="tag">E-commerce</span>
-</div>
-</div>
-</div>
-
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%)">Custom CRM</div>
-<div class="portfolio-content">
-<h4>Business Management System</h4>
-<p>Custom CRM and business management solution with lead tracking, client management, and sales pipeline automation.</p>
-<div class="portfolio-tags">
-<span class="tag">React</span>
-<span class="tag">Node.js</span>
-<span class="tag">MySQL</span>
-<span class="tag">Dashboard</span>
-</div>
-</div>
-</div>
-
-<div class="portfolio-card">
-<div class="portfolio-img" style="background:linear-gradient(135deg,#30cfd0 0%,#330867 100%)">Agency Website</div>
-<div class="portfolio-content">
-<h4>Digital Marketing Agency Portfolio</h4>
-<p>SEO-optimized portfolio website with service showcase, case studies, and lead generation forms for digital marketing agency.</p>
-<div class="portfolio-tags">
-<span class="tag">React</span>
-<span class="tag">SEO</span>
-<span class="tag">Lead Gen</span>
-<span class="tag">Analytics</span>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section class="section section--alt" id="milestones">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow" data-reveal>Our journey</div>
+      <h2 class="h2" data-reveal>Key <span class="serif grad-text">milestones</span></h2>
+    </div>
+    <div class="timeline" data-track>
+      <div class="timeline__line"><span></span></div>
+      <div class="t-item" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <div>
+          <div class="t-item__year">2021 · The beginning</div>
+          <h3 class="h3">Devmora Technology founded</h3>
+          <p>Started as a freelance operation in Greater Noida, building custom React frontends for local businesses and startups. First client shipped in under 2 weeks.</p>
+        </div>
+      </div>
+      <div class="t-item" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+        <div>
+          <div class="t-item__year">2022 · First major build</div>
+          <h3 class="h3">Sellaids, multi-vendor e-commerce</h3>
+          <p>Delivered a full multi-vendor e-commerce platform with 1000+ products, Cloudinary CDN, admin dashboards and vendor management panels built from scratch.</p>
+        </div>
+      </div>
+      <div class="t-item" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div>
+          <div class="t-item__year">2023 · Government sector</div>
+          <h3 class="h3">NDR Portal, Directorate General of Hydrocarbons</h3>
+          <p>Won and delivered a government-grade data portal on AWS EC2 with Sequelize ORM, CCAvenue payments and interactive data catalogues. A landmark project for the agency.</p>
+        </div>
+      </div>
+      <div class="t-item" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div>
+          <div class="t-item__year">2023 · International expansion</div>
+          <h3 class="h3">First UK client, BRIT Commercials</h3>
+          <p>Began our international journey with a UK truck dealership: full SEO overhaul, GTmetrix Grade A performance and a web retainer that continues today.</p>
+        </div>
+      </div>
+      <div class="t-item" data-reveal>
+        <div class="step__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+        <div>
+          <div class="t-item__year">2024 · Present</div>
+          <h3 class="h3">Scaling up &amp; new horizons</h3>
+          <p>20+ projects delivered. Expanding into React Native apps, advanced data visualisation and enterprise-grade cloud infrastructure. Currently accepting new projects.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section class="section section-alt">
-<div class="container">
-<h2>About Devmora Technology - Your Trusted Web Development Company in India</h2>
-<p>
-Founded in 2024, Devmora Technology has quickly established itself as a trusted web development partner for businesses across India, UK, USA, and Canada. 
-Based in Greater Noida, India, we specialize in building enterprise-grade web applications using modern JavaScript frameworks and cloud technologies.
-</p>
-<p>
-Our team of expert developers has successfully delivered 15+ projects ranging from e-commerce platforms and healthcare websites to custom 
-business applications. We pride ourselves on delivering high-quality, scalable solutions that drive real business results.
-</p>
+<div style="height:clamp(90px,12vw,150px)"></div>
 
-<h3 style="margin-top:2rem;color:var(--primary)">Our Journey</h3>
-<div class="features-grid" style="margin-top:2rem">
-<div class="feature-card">
-<h4>2022 - Foundation & Early Projects</h4>
-<p>Started Devmora Technology in Greater Noida, focusing on React and Node.js development for local and international clients.</p>
-</div>
-
-<div class="feature-card">
-<h4>2023 - E-commerce & Healthcare</h4>
-<p>Expanded into e-commerce development and healthcare websites, building platforms for UK and Canadian clients.</p>
-</div>
-
-<div class="feature-card">
-<h4>2024 - Official Launch</h4>
-<p>Officially incorporated Devmora Technology, established full-stack development services with comprehensive client portfolio.</p>
-</div>
-
-<div class="feature-card">
-<h4>2024-25 - Scaling Operations</h4>
-<p>Growing team and capabilities, serving diverse industries with custom web applications and cloud solutions.</p>
-</div>
-</div>
-
-<h3 style="margin-top:3rem;color:var(--primary)">Meet Our Team</h3>
-<div class="service-card" style="max-width:600px;margin-top:2rem">
-<h4>Abhimanyu Rai - Founder & Lead Developer</h4>
-<p>
-Full-stack developer with expertise in React, Node.js, AWS, and modern web technologies. 
-Specialized in building scalable applications for government, e-commerce, and enterprise clients.
-</p>
-<div class="portfolio-tags">
-<span class="tag">React.js</span>
-<span class="tag">Node.js</span>
-<span class="tag">AWS</span>
-<span class="tag">PHP</span>
-<span class="tag">Angular</span>
-<span class="tag">Shopify</span>
-</div>
-</div>
-</div>
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta" data-reveal="scale">
+      <div class="eyebrow">Ready to build?</div>
+      <h2 class="h2">Let's build <span class='serif'>together.</span></h2>
+      <p class="lead">Have a project in mind? We're always open to ambitious ideas and to helping your business grow.</p>
+      <div class="cta__btns">
+        <a href="contact.html" class="btn btn-primary" data-magnetic>Start a project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a href="services.html" class="btn btn-ghost">Explore services</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="section">
-<div class="container">
-<h2>Frequently Asked Questions About Web Development</h2>
+</main>
 
-<div style="margin-top:2rem;max-width:800px">
-<div class="service-card">
-<h4>How much does web development cost in India?</h4>
-<p>
-Web development costs vary based on project complexity. A basic website starts from ₹50,000, while complex applications 
-can range from ₹2-10 lakhs. We provide detailed quotes after understanding your requirements.
-</p>
-</div>
-
-<div class="service-card">
-<h4>How long does it take to develop a website?</h4>
-<p>
-Timeline depends on project scope. A simple website takes 2-4 weeks, while complex web applications can take 2-4 months. 
-We follow agile methodology with regular updates and milestones.
-</p>
-</div>
-
-<div class="service-card">
-<h4>Do you provide hosting and domain services?</h4>
-<p>
-Yes, we handle complete deployment including domain registration, hosting setup on AWS or shared hosting, 
-SSL certificates, and ongoing server maintenance.
-</p>
-</div>
-
-<div class="service-card">
-<h4>Can you work with clients outside India?</h4>
-<p>
-Absolutely! We work with clients across UK, USA, Canada, and Australia. We maintain clear communication through 
-email, video calls, and project management tools.
-</p>
-</div>
-
-<div class="service-card">
-<h4>Do you provide ongoing support after project delivery?</h4>
-<p>
-Yes, we offer comprehensive support and maintenance packages. This includes bug fixes, security updates, 
-feature additions, and technical support.
-</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- CTA SECTION -->
-<section class="cta-section" id="contact">
-<div class="container">
-<h2>Ready to Build Your Next Web Project?</h2>
-<p>
-Let's discuss how Devmora Technology can help transform your ideas into powerful web applications. 
-Get a free consultation and project quote today.
-</p>
-<a href="mailto:contact@devmoratech.com" class="btn">Get Free Consultation</a>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-<div class="container">
-<div class="footer-content">
-<div class="footer-section">
-<h4>Devmora Technology</h4>
-<p>Leading web development company in India, delivering enterprise-grade React, Node.js, and AWS solutions since 2021.</p>
-<p style="margin-top:1rem">Greater Noida, Uttar Pradesh, India</p>
-</div>
-
-<div class="footer-section">
-<h4>Services</h4>
-<a href="#services">React.js Development</a>
-<a href="#services">Node.js Development</a>
-<a href="#services">AWS Cloud Solutions</a>
-<a href="#services">E-commerce Development</a>
-<a href="#services">API Development</a>
-</div>
-
-<div class="footer-section">
-<h4>Company</h4>
-<a href="#portfolio">Portfolio</a>
-<a href="#process">Our Process</a>
-<a href="#tech">Technology Stack</a>
-<a href="#contact">Contact Us</a>
-</div>
-
-<div class="footer-section">
-<h4>Contact</h4>
-<a href="mailto:contact@devmoratech.com">contact@devmoratech.com</a>
-<p style="margin-top:1rem">Business Hours:<br>Mon-Sat: 10 AM - 7 PM IST</p>
-</div>
-</div>
-
-<div class="footer-bottom">
-<p>&copy; 2024 Devmora Technology. All rights reserved. | Web Development Company in India</p>
-</div>
-</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__about">
+        <a href="index.html" class="brand"><span class="brand__mark">D</span><span>Devmora<small>.tech</small></span></a>
+        <p>A full-stack web &amp; app development agency from Greater Noida, building fast, scalable products for clients across India and the UK.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="services.html#web">Web Development</a>
+        <a href="services.html#ecommerce">E-Commerce</a>
+        <a href="services.html#mobile">Mobile Apps</a>
+        <a href="services.html#seo">SEO &amp; Speed</a>
+      </div>
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <a href="mailto:info@devmora.com">info@devmora.com</a>
+        <a href="https://wa.me/918796937376" target="_blank" rel="noopener">+91 8796937376</a>
+        <a href="https://www.linkedin.com/company/devmora-technology" target="_blank" rel="noopener">LinkedIn</a>
+        <span>Greater Noida, UP, India</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer__word" aria-hidden="true">devmora</div>
+  <div class="container">
+    <div class="footer__bottom">
+      <span>© <span data-year>2025</span> Devmora Technology. All rights reserved.</span>
+      <a href="#top" class="to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+    </div>
+  </div>
 </footer>
 
+<script src="assets/js/main.js"></script>
 </body>
 </html>
