@@ -1824,3 +1824,17 @@ select.input option { background: var(--surface); color: var(--text); }
 .wa-float:focus-visible{outline:2px solid #fff;outline-offset:3px}
 @media (max-width:640px){.wa-float{right:14px;bottom:14px;padding:14px}.wa-float span{display:none}}
 @media print{.wa-float{display:none}}
+
+/* ── Landing pages ── */
+.lp-hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.lp-intro{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,6vw,90px);align-items:start}
+.lp-prose p{color:var(--muted);font-size:17px;line-height:1.75}
+.lp-prose p+p{margin-top:18px}
+.lp-card__text{color:var(--muted);font-size:15px;line-height:1.65}
+.lp-build{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px}
+.lp-related{text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease}
+.lp-related:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.lp-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.lp-links a{display:inline-flex;padding:10px 16px;border:1px solid var(--line-2);border-radius:999px;color:var(--text);text-decoration:none;font-size:14px;transition:border-color .2s,background .2s}
+.lp-links a:hover{border-color:var(--accent);background:var(--accent-soft)}
+@media (max-width:900px){.lp-intro{grid-template-columns:1fr}.lp-build{grid-template-columns:1fr}}
