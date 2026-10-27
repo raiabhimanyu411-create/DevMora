@@ -252,11 +252,14 @@
     });
   });
 
-  /* ── Contact form → opens email client with the details ── */
+  /* ── Contact form → sends enquiry by email (FormSubmit), WhatsApp fallback ── */
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', e => {
+    const LEAD_EMAIL = 'raiabhimanyu411@gmail.com';
+    const WA_NUMBER = '918092952307';
+    form.addEventListener('submit', async e => {
       e.preventDefault();
+      if (form.querySelector('[name="_honey"]')?.value) return; // bot trap
       const required = [...form.querySelectorAll('[required]')];
       let firstBad = null;
       required.forEach(f => {
@@ -268,21 +271,44 @@
 
       const data = new FormData(form);
       const name = `${data.get('firstName') || ''} ${data.get('lastName') || ''}`.trim();
-      const body = [
-        `Name: ${name}`,
-        `Email: ${data.get('email') || ''}`,
-        `Company / Website: ${data.get('company') || '-'}`,
-        `Service: ${data.get('service') || '-'}`,
-        `Budget: ${data.get('budget') || '-'}`,
-        '',
-        `${data.get('message') || ''}`
-      ].join('\n');
+      const payload = {
+        _subject: `New project enquiry: ${name}`,
+        _template: 'table',
+        _captcha: 'false',
+        Name: name,
+        Email: data.get('email') || '',
+        'Company / Website': data.get('company') || '-',
+        Service: data.get('service') || '-',
+        Budget: data.get('budget') || '-',
+        Message: data.get('message') || '',
+        Page: location.href
+      };
 
-      const subject = `New project enquiry — ${name}`;
-      window.location.href = `mailto:info@devmora.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const btn = form.querySelector('[type="submit"]');
+      const btnHtml = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-      form.style.display = 'none';
-      document.getElementById('formSuccess')?.classList.add('is-shown');
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('send failed');
+        form.style.display = 'none';
+        document.getElementById('formSuccess')?.classList.add('is-shown');
+      } catch (err) {
+        const text = [
+          `Hi Devmora, I'm ${name}.`,
+          `Email: ${payload.Email}`,
+          `Service: ${payload.Service} | Budget: ${payload.Budget}`,
+          '',
+          payload.Message
+        ].join('\n');
+        if (btn) { btn.disabled = false; btn.innerHTML = btnHtml; }
+        alert('Could not send the form right now. We will open WhatsApp so you can send your enquiry directly.');
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      }
     });
 
     form.querySelectorAll('.input').forEach(f =>
