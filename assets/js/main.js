@@ -6,61 +6,11 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  const store = {
-    get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* ignore */ } }
-  };
-
-  /* ── Loader / page transition ── */
-  const firstVisit = !store.get('dm-visited');
-  store.set('dm-visited', '1');
-
-  const curtain = document.querySelector('.curtain');
-  if (!firstVisit && curtain) curtain.querySelector('.curtain__word')?.remove();
-
-  const revealDelay = reduceMotion ? 0 : (firstVisit ? 1100 : 150);
-
-  const start = () => {
-    setTimeout(() => {
-      root.classList.add('is-loaded');
-      setTimeout(() => root.classList.add('is-ready'), reduceMotion ? 0 : 450);
-    }, revealDelay);
-  };
-
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, { once: true });
-
-  // Safety net in case load is slow (fonts, etc.)
-  setTimeout(() => { root.classList.add('is-loaded', 'is-ready'); }, 3500);
-
-  window.addEventListener('pageshow', e => {
-    if (e.persisted) {
-      root.classList.remove('is-leaving');
-      root.classList.add('is-loaded', 'is-ready');
-    }
-  });
-
-  document.addEventListener('click', e => {
-    const a = e.target.closest('a[href]');
-    if (!a || reduceMotion) return;
-    if (a.target === '_blank' || a.hasAttribute('download')) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-
-    const url = new URL(a.href, location.href);
-    if (url.origin !== location.origin) return;
-    if (!/^https?:$/.test(url.protocol)) return;
-
-    const norm = p => p.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/\/$/, '');
-    const samePage = norm(url.pathname) === norm(location.pathname);
-    if (samePage && url.hash) return; // in-page anchor
-    if (samePage && !url.hash) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-
-    e.preventDefault();
-    document.body.classList.remove('menu-open');
-    root.classList.remove('is-loaded');
-    root.classList.add('is-leaving');
-    setTimeout(() => { location.href = url.href; }, 650);
-  });
+  /* ── Ready state ──
+     No intro loader or exit curtain: content paints immediately, which keeps
+     LCP fast for visitors and for Google's renderer. Hero entrance animations
+     are pure CSS and start on first paint. */
+  root.classList.add('is-loaded', 'is-ready');
 
   /* ── Navigation ── */
   const nav = document.querySelector('.nav');
@@ -150,7 +100,7 @@
         if (entry.isIntersecting) {
           // wait for the hero to be revealed before counting
           const go = () => runCount(entry.target);
-          root.classList.contains('is-ready') ? go() : setTimeout(go, 1200);
+          go();
           cio.unobserve(entry.target);
         }
       });
