@@ -255,8 +255,8 @@
   /* ── Contact form → sends enquiry by email (FormSubmit), WhatsApp fallback ── */
   const form = document.getElementById('contactForm');
   if (form) {
-    // Enquiries are delivered privately by FormSubmit; the address is assembled at runtime so it never appears in the page.
-    const LEAD_EMAIL = ['raiabhimanyu411', 'gmail.com'].join('@');
+    // FormSubmit alias: enquiries reach the Devmora inbox without exposing any email address.
+    const LEAD_EMAIL = '7fca19c4e0bc3ccdbeb47fc3354a4475';
     const WA_NUMBER = '918092952307';
     form.addEventListener('submit', async e => {
       e.preventDefault();
