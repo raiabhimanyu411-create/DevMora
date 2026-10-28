@@ -255,7 +255,8 @@
   /* ── Contact form → sends enquiry by email (FormSubmit), WhatsApp fallback ── */
   const form = document.getElementById('contactForm');
   if (form) {
-    const LEAD_EMAIL = 'raiabhimanyu411@gmail.com';
+    // Enquiries are delivered privately by FormSubmit; the address is assembled at runtime so it never appears in the page.
+    const LEAD_EMAIL = ['raiabhimanyu411', 'gmail.com'].join('@');
     const WA_NUMBER = '918092952307';
     form.addEventListener('submit', async e => {
       e.preventDefault();
@@ -279,7 +280,7 @@
         Email: data.get('email') || '',
         'Company / Website': data.get('company') || '-',
         Service: data.get('service') || '-',
-        Budget: data.get('budget') || '-',
+        Timeline: data.get('timeline') || '-',
         Message: data.get('message') || '',
         Page: location.href
       };
@@ -301,7 +302,7 @@
         const text = [
           `Hi Devmora, I'm ${name}.`,
           `Email: ${payload.Email}`,
-          `Service: ${payload.Service} | Budget: ${payload.Budget}`,
+          `Service: ${payload.Service} | Start: ${payload.Timeline}`,
           '',
           payload.Message
         ].join('\n');
