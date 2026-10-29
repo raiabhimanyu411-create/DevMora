@@ -30,7 +30,7 @@
 <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="/assets/css/style.css?v=20261028perf"/>
+<link rel="stylesheet" href="/assets/css/style.css?v=20261029form"/>
 <noscript><style>[data-reveal],.fade-in,.line>span{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://devmoratech.com/#org", "name": "Devmora Technology", "alternateName": ["Devmora Tech", "Devmora", "DevMora Technologies"], "url": "https://devmoratech.com/", "logo": "https://devmoratech.com/assets/icons/icon-512.png", "image": "https://devmoratech.com/og-image.png", "description": "Web and app development company building websites, web apps, SaaS products, e-commerce stores and mobile apps for businesses worldwide.", "founder": {"@type": "Person", "name": "Abhimanyu Rai", "jobTitle": "Founder and Lead Developer"}, "telephone": "+91-8092952307", "address": {"@type": "PostalAddress", "streetAddress": "Sector 142", "addressLocality": "Greater Noida", "addressRegion": "Uttar Pradesh", "postalCode": "201305", "addressCountry": "IN"}, "areaServed": "Worldwide", "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "09:00", "closes": "19:00"}, "contactPoint": [{"@type": "ContactPoint", "telephone": "+91-8092952307", "contactType": "sales", "areaServed": "Worldwide", "availableLanguage": ["English", "Hindi"]}], "sameAs": ["https://www.linkedin.com/company/devmora-technology"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ContactPage", "url": "https://devmoratech.com/contact", "mainEntity": {"@id": "https://devmoratech.com/#org"}}</script>
@@ -146,10 +146,22 @@
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0"/>
         <p class="form-note">Prefer chat? <a href="https://wa.me/918092952307?text=Hi%20Devmora%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
       </form>
-      <div class="form-success" id="formSuccess">
-        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3 class="h3">Message sent</h3>
-        <p>Thanks for reaching out. We have received your details and will reply within 24 hours. Need a faster answer? <a href="https://wa.me/918092952307?text=Hi%20Devmora%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+      <div class="form-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1">
+        <div class="fs-check" aria-hidden="true">
+          <svg viewBox="0 0 52 52"><circle class="fs-check__ring" cx="26" cy="26" r="24"/><path class="fs-check__tick" d="M15 27l7 7 15-15"/></svg>
+        </div>
+        <span class="fs-badge">Enquiry received</span>
+        <h3 class="h3 fs-title">Thank you<span id="fsName"></span>!</h3>
+        <p class="fs-lead">Our team will review your project details and get back to you within <strong>24 hours</strong><span id="fsEmailWrap"> at <strong id="fsEmail"></strong></span>.</p>
+        <ol class="fs-steps">
+          <li><span class="fs-steps__num">1</span><div><strong>We review your brief</strong><span>A developer, not a salesperson, reads every enquiry.</span></div></li>
+          <li><span class="fs-steps__num">2</span><div><strong>We reply with next steps</strong><span>Questions, a rough approach and a ballpark estimate.</span></div></li>
+          <li><span class="fs-steps__num">3</span><div><strong>Free discovery call</strong><span>A short call in your time zone to plan the project.</span></div></li>
+        </ol>
+        <div class="fs-actions">
+          <a class="btn btn-primary" href="https://wa.me/918092952307?text=Hi%20Devmora%2C%20I%20just%20sent%20an%20enquiry%20from%20your%20website." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <button type="button" class="btn btn-ghost" id="fsAgain">Send another message</button>
+        </div>
       </div>
     </div>
   </div>
@@ -217,6 +229,6 @@
 </footer>
 
 <a href="https://wa.me/918092952307?text=Hi%20Devmora%2C%20I%27d%20like%20to%20discuss%20a%20project." class="wa-float" target="_blank" rel="noopener" aria-label="Chat with Devmora on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.23 9.43-9.44 9.43m8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.8.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.3l5.7-1.5a11.3 11.3 0 0 0 5.74 1.47h.01c6.25 0 11.35-5.1 11.35-11.35 0-3.03-1.18-5.88-3.33-8.02"/></svg><span>Chat on WhatsApp</span></a>
-<script src="/assets/js/main.js?v=20261028perf" defer></script>
+<script src="/assets/js/main.js?v=20261029form" defer></script>
 </body>
 </html>
