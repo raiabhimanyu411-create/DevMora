@@ -203,6 +203,8 @@
   if (form) {
     // FormSubmit alias: enquiries reach the Devmora inbox without exposing any email address.
     const LEAD_EMAIL = '7fca19c4e0bc3ccdbeb47fc3354a4475';
+    // Web3Forms access key (free, from web3forms.com). Public by design: it only allows sending to your inbox.
+    const WEB3FORMS_KEY = '';
     const WA_NUMBER = '918092952307';
     form.addEventListener('submit', async e => {
       e.preventDefault();
@@ -235,13 +237,36 @@
       const btnHtml = btn ? btn.innerHTML : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-      try {
-        const res = await fetch(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, {
+      // Try Web3Forms first, then FormSubmit. If one service is down the other still delivers the enquiry.
+      const post = (url, body) =>
+        fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error('send failed');
+          body: JSON.stringify(body)
+        }).then(r => r.json().catch(() => ({})).then(j => {
+          if (!r.ok || j.success === false || j.success === 'false') throw new Error('send failed');
+          return j;
+        }));
+
+      const senders = [];
+      if (WEB3FORMS_KEY) {
+        senders.push(() => post('https://api.web3forms.com/submit', {
+          access_key: WEB3FORMS_KEY,
+          subject: payload._subject,
+          from_name: 'Devmora Website',
+          replyto: payload.Email,
+          botcheck: '',
+          ...Object.fromEntries(Object.entries(payload).filter(([k]) => !k.startsWith('_')))
+        }));
+      }
+      senders.push(() => post(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, payload));
+
+      try {
+        let sent = false;
+        for (const send of senders) {
+          try { await send(); sent = true; break; } catch (_) { /* try next service */ }
+        }
+        if (!sent) throw new Error('all senders failed');
         form.style.display = 'none';
         document.getElementById('formSuccess')?.classList.add('is-shown');
       } catch (err) {
