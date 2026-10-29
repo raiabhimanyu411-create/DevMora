@@ -204,7 +204,7 @@
     // FormSubmit alias: enquiries reach the Devmora inbox without exposing any email address.
     const LEAD_EMAIL = '7fca19c4e0bc3ccdbeb47fc3354a4475';
     // Web3Forms access key (free, from web3forms.com). Public by design: it only allows sending to your inbox.
-    const WEB3FORMS_KEY = '';
+    const WEB3FORMS_KEY = '26a67c12-321a-446c-963d-cdd090d1a196';
     const WA_NUMBER = '918092952307';
     form.addEventListener('submit', async e => {
       e.preventDefault();
