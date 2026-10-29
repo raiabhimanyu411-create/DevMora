@@ -15,22 +15,21 @@
   /* ── Navigation ── */
   const nav = document.querySelector('.nav');
   const progress = document.querySelector('.progress');
-  let lastY = window.scrollY;
-
   const onScroll = () => {
+    // Read first, then write, so the browser never has to re-layout mid-frame
     const y = window.scrollY;
-    if (nav) {
-      nav.classList.toggle('is-scrolled', y > 30);
-    }
-    if (progress) {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-    }
-    lastY = y;
+    const max = progress ? document.documentElement.scrollHeight - window.innerHeight : 0;
+    if (nav) nav.classList.toggle('is-scrolled', y > 30);
+    if (progress) progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  let navTicking = false;
+  window.addEventListener('scroll', () => {
+    if (navTicking) return;
+    navTicking = true;
+    requestAnimationFrame(() => { navTicking = false; onScroll(); });
+  }, { passive: true });
+  requestAnimationFrame(onScroll);
 
   // Active link
   const page = document.body.dataset.page;
@@ -163,23 +162,37 @@
   /* ── Scroll-driven progress lines (process + timeline) ── */
   const tracks = [...document.querySelectorAll('[data-track]')];
   if (tracks.length) {
+    const trackParts = tracks.map(track => ({
+      track,
+      line: track.querySelector('.process__line, .timeline__line'),
+      steps: [...track.querySelectorAll('.step, .t-item')]
+        .map(step => ({ step, dot: step.querySelector('.step__dot') }))
+        .filter(x => x.dot)
+    }));
     const update = () => {
       const vh = window.innerHeight;
-      tracks.forEach(track => {
-        const line = track.querySelector('.process__line, .timeline__line');
-        const r = track.getBoundingClientRect();
+      // Read phase
+      const reads = trackParts.map(({ track, steps }) => ({
+        r: track.getBoundingClientRect(),
+        on: steps.map(({ dot }) => dot.getBoundingClientRect().top < vh * 0.75)
+      }));
+      // Write phase
+      trackParts.forEach(({ line, steps }, i) => {
+        const { r, on } = reads[i];
         const p = Math.min(Math.max((vh * 0.75 - r.top) / (r.height * 0.9), 0), 1);
         line?.style.setProperty('--p', reduceMotion ? 1 : p.toFixed(3));
-        track.querySelectorAll('.step, .t-item').forEach(step => {
-          const dot = step.querySelector('.step__dot');
-          if (!dot) return;
-          step.classList.toggle('is-on', dot.getBoundingClientRect().top < vh * 0.75);
-        });
+        steps.forEach(({ step }, j) => step.classList.toggle('is-on', on[j]));
       });
     };
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
+    let trackTicking = false;
+    const schedule = () => {
+      if (trackTicking) return;
+      trackTicking = true;
+      requestAnimationFrame(() => { trackTicking = false; update(); });
+    };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    schedule();
   }
 
   /* ── FAQ ── */
@@ -351,8 +364,9 @@
     document.body.appendChild(svg);
     const feImage = svg.querySelector('#lg-map');
 
+    let barW = 0, barH = 0;
     const buildMap = () => {
-      const w = Math.round(bar.offsetWidth), h = Math.round(bar.offsetHeight);
+      const w = Math.round(barW), h = Math.round(barH);
       if (!w || !h) return;
       const c = document.createElement('canvas');
       c.width = w; c.height = h;
@@ -385,10 +399,14 @@
       feImage.setAttribute('height', h);
       feImage.setAttribute('href', c.toDataURL());
     };
-    buildMap();
-    root.classList.add('lg-refract');
-    let rt;
-    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildMap, 150); });
+    let rt, first = true;
+    new ResizeObserver(entries => {
+      const box = entries[0].borderBoxSize && entries[0].borderBoxSize[0];
+      barW = box ? box.inlineSize : entries[0].contentRect.width;
+      barH = box ? box.blockSize : entries[0].contentRect.height;
+      if (first) { first = false; buildMap(); root.classList.add('lg-refract'); return; }
+      clearTimeout(rt); rt = setTimeout(buildMap, 150);
+    }).observe(bar);
   }
 
   /* ── Smooth inertia scrolling (mouse wheel / trackpad, desktop only) ──
