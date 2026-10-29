@@ -267,8 +267,7 @@
           try { await send(); sent = true; break; } catch (_) { /* try next service */ }
         }
         if (!sent) throw new Error('all senders failed');
-        form.style.display = 'none';
-        document.getElementById('formSuccess')?.classList.add('is-shown');
+        showSuccess(data.get('firstName'), payload.Email);
       } catch (err) {
         const text = [
           `Hi Devmora, I'm ${name}.`,
@@ -281,6 +280,40 @@
         alert('Could not send the form right now. We will open WhatsApp so you can send your enquiry directly.');
         window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       }
+    });
+
+    // Swap form → thank-you card without the page jumping: keep the card height,
+    // then bring the card (not the section below it) into view.
+    const success = document.getElementById('formSuccess');
+    const card = form.closest('.form-card') || form.parentElement;
+    const submitHtml = form.querySelector('[type="submit"]')?.innerHTML || '';
+    function showSuccess(firstName, email) {
+      if (!success) { form.style.display = 'none'; return; }
+      const nameEl = document.getElementById('fsName');
+      const emailEl = document.getElementById('fsEmail');
+      const emailWrap = document.getElementById('fsEmailWrap');
+      if (nameEl) nameEl.textContent = firstName ? `, ${String(firstName).trim()}` : '';
+      if (emailEl) emailEl.textContent = email || '';
+      if (emailWrap) emailWrap.hidden = !email;
+      const keepY = window.scrollY;
+      form.style.display = 'none';
+      success.classList.add('is-shown');
+      window.scrollTo({ top: keepY, behavior: 'instant' });
+      const rect = card.getBoundingClientRect();
+      const offset = 96; // sticky nav
+      if (rect.top < offset || rect.top > window.innerHeight * 0.6) {
+        window.scrollTo({ top: window.scrollY + rect.top - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+      success.focus({ preventScroll: true });
+    }
+    document.getElementById('fsAgain')?.addEventListener('click', () => {
+      form.reset();
+      success.classList.remove('is-shown');
+      form.style.display = '';
+      const btn = form.querySelector('[type="submit"]');
+      if (btn) { btn.disabled = false; btn.innerHTML = submitHtml; }
+      form.querySelectorAll('.is-error').forEach(f => f.classList.remove('is-error'));
+      form.querySelector('input:not([type="hidden"])')?.focus({ preventScroll: true });
     });
 
     form.querySelectorAll('.input').forEach(f =>
