@@ -211,6 +211,18 @@
     });
   });
 
+  /* ── GA4 conversion events (no-op if gtag is blocked or missing) ── */
+  const track = (name, params) => { try { if (typeof window.gtag === 'function') window.gtag('event', name, params || {}); } catch (_) {} };
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    const label = (a.textContent || '').trim().slice(0, 80);
+    if (/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href)) track('whatsapp_click', { link_url: href, link_text: label, page_path: location.pathname });
+    else if (href.startsWith('tel:')) track('phone_click', { link_url: href, link_text: label, page_path: location.pathname });
+    else if (href.startsWith('mailto:')) track('email_click', { link_url: href, link_text: label, page_path: location.pathname });
+  });
+
   /* ── Contact form → sends enquiry by email (FormSubmit), WhatsApp fallback ── */
   const form = document.getElementById('contactForm');
   if (form) {
@@ -280,6 +292,7 @@
           try { await send(); sent = true; break; } catch (_) { /* try next service */ }
         }
         if (!sent) throw new Error('all senders failed');
+        track('generate_lead', { form_id: 'contactForm', service: payload.Service, timeline: payload.Timeline });
         showSuccess(data.get('firstName'), payload.Email);
       } catch (err) {
         const text = [
