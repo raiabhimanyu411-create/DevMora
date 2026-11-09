@@ -1448,3 +1448,82 @@ body::before {
 .scope-card--do .scope-list svg { color: var(--accent); }
 .scope-badge--dont { background: linear-gradient(145deg, #c4c8cf, #9aa0aa); }
 .scope-card--dont .scope-list svg { color: #9aa0aa; }
+
+/* Hero and article headline text slides in without fading, so it counts as painted for LCP straight away */
+.hero .lead.fade-in,.page-hero .lead.fade-in,.article__head .fade-in{animation-name:slideUp}
+@keyframes slideUp{from{transform:translateY(14px)}to{transform:none}}
+
+/* ==========================================================================
+   Services dropdown (desktop nav)
+   ========================================================================== */
+.nav__dd { position: relative; }
+.nav__dd > .nav__link { display: inline-flex; align-items: center; gap: 4px; }
+.nav__dd > .nav__link svg { width: 14px; height: 14px; transition: transform .3s var(--ease); }
+.nav__dd:hover > .nav__link svg, .nav__dd:focus-within > .nav__link svg { transform: rotate(180deg); }
+.nav__menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: min(760px, calc(100vw - 48px));
+  padding-top: 18px; /* hover bridge between link and panel */
+  transform: translate(-50%, 6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s var(--ease), transform .3s var(--ease), visibility .25s;
+}
+.nav__dd:hover .nav__menu, .nav__dd:focus-within .nav__menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav__panel {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 0.8fr;
+  gap: 8px 28px;
+  padding: 22px;
+  border-radius: 24px;
+  /* solid: backdrop-filter does not work inside the already-blurred nav bar */
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+}
+.nav__group { display: grid; gap: 2px; align-content: start; }
+.nav__group-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); padding: 0 10px 8px; }
+.nav__item { display: grid; gap: 1px; padding: 9px 10px; border-radius: 12px; font-size: 14.5px; font-weight: 500; color: var(--text); transition: background .2s; }
+.nav__item small { font-size: 13px; font-weight: 400; color: var(--muted); line-height: 1.4; }
+.nav__item:hover, .nav__item:focus-visible { background: var(--accent-soft); }
+.nav__all { grid-column: 1 / -1; margin-top: 8px; padding: 12px 10px 0; border-top: 1px solid var(--line); font-size: 14.5px; font-weight: 500; color: var(--accent); }
+
+/* Mobile menu: service shortcuts under "Services" */
+.mobile-menu__sub { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
+.mobile-menu__links .mobile-menu__sub a { font-family: var(--font-body); font-size: 14.5px; font-weight: 500; letter-spacing: 0; padding: 8px 14px; border: 1px solid var(--line); border-radius: 100px; background: rgba(255,255,255,.7); }
+.mobile-menu { overflow-y: auto; }
+
+/* ==========================================================================
+   Tighter vertical rhythm
+   ========================================================================== */
+.section { padding: clamp(64px, 8vw, 104px) 0; }
+.section--tight { padding: clamp(48px, 6vw, 76px) 0; }
+.hero { padding-bottom: 56px; }
+.section-foot { margin-top: 40px; }
+
+/* ==========================================================================
+   Service pages: project showcase beside the intro copy
+   ========================================================================== */
+.lp-intro__side { display: grid; gap: 28px; align-content: start; }
+.lp-shot { overflow: hidden; }
+.lp-shot .work-card__media { aspect-ratio: 16 / 10; }
+.lp-shot__caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; font-size: 14.5px; color: var(--muted); }
+.lp-shot__caption b { color: var(--text); font-weight: 600; }
+.lp-shot__caption svg { width: 32px; height: 32px; padding: 9px; border-radius: 50%; background: rgba(0,0,0,.05); flex-shrink: 0; transition: transform .4s var(--ease), background .3s, color .3s; }
+a.lp-shot:hover .lp-shot__caption svg { transform: rotate(45deg); background: var(--text); color: #fff; }
+
+/* ==========================================================================
+   Blog posts: smaller cover, sticky contents on wide screens
+   ========================================================================== */
+.article__cover { max-width: 720px; margin-top: 40px; border-radius: 22px; }
+@media (min-width: 1240px) {
+  .article ~ .container { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 720px) minmax(230px, 1fr); column-gap: 48px; align-items: start; }
+  .article ~ .container > * { grid-column: 2; max-width: none; }
+  .article ~ .container > .article__cover { grid-row: 1; }
+  .article ~ .container > .article__body { grid-row: 2; }
+  .article ~ .container > .article__foot { grid-row: 3; }
+  .article ~ .container > .toc { grid-column: 3; grid-row: 2 / 4; position: sticky; top: calc(var(--nav-h) + 40px); margin: 48px 0 0; padding: 18px 20px; max-height: calc(100vh - var(--nav-h) - 80px); overflow-y: auto; }
+  .article ~ .container > .toc ol { font-size: 14px; gap: 8px; }
+}

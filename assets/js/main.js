@@ -34,6 +34,10 @@
   // Active link
   const page = document.body.dataset.page;
   document.querySelectorAll(`[data-nav="${page}"]`).forEach(el => el.classList.add('is-active'));
+  // Service sub-pages also highlight "Services"
+  if (/development|developers/.test(page || '')) {
+    document.querySelectorAll('[data-nav="services"]').forEach(el => el.classList.add('is-active'));
+  }
 
   // Mobile menu
   const burger = document.querySelector('.burger');

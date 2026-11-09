@@ -41,13 +41,19 @@
       ]
     },
     {
-      "source": "/(favicon.png|og-image.png)",
+      "source": "/og-image.png",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=2592000, stale-while-revalidate=86400"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/assets/icons/icon-48.png"
     }
   ]
 }
