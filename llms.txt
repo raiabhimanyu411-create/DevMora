@@ -1,0 +1,72 @@
+# Devmora Technology
+
+> Devmora Technology is a senior-led web and app development company based in Greater Noida, India. We build websites, web apps, SaaS products, e-commerce stores and React Native mobile apps with React, Next.js, Node.js and AWS for businesses in the UK, USA, Canada and Australia.
+
+- Founder and lead developer: Abhimanyu Rai
+- Contact: WhatsApp / phone +91 80929 52307, or the form at https://devmoratech.com/contact (reply within 24 hours)
+- Working hours: Monday to Saturday, 09:00 to 19:00 India time (IST)
+- Clients own all code, designs, domains and accounts from day one
+
+## Services
+
+- [All services](https://devmoratech.com/services): Website and web app development, SaaS, e-commerce, mobile apps, SEO and cloud support
+- [SaaS development](https://devmoratech.com/saas-development): MVP to scale, multi-tenant apps, subscriptions, roles and integrations
+- [Mobile app development](https://devmoratech.com/mobile-app-development): Cross-platform iOS and Android apps in React Native, plus the dashboards and APIs behind them
+- [E-commerce and marketplace development](https://devmoratech.com/ecommerce-development): Custom online stores and multi-vendor marketplaces
+- [Hire React developers](https://devmoratech.com/hire-react-developers): Dedicated React.js and Next.js developers from India
+- [Hire Node.js developers](https://devmoratech.com/hire-nodejs-developers): Dedicated Node.js and Express developers for APIs, SaaS backends and integrations
+- [Offshore web development](https://devmoratech.com/offshore-web-development): A dedicated offshore development team in India for businesses and agencies
+
+## Markets served
+
+- [United Kingdom](https://devmoratech.com/web-development-uk): UK GDPR-aware builds, UK-hours calls, AWS London hosting
+- [United States](https://devmoratech.com/web-development-usa): MVP and SaaS development for US startups, ADA-aware builds
+- [Canada](https://devmoratech.com/web-development-canada): Bilingual English/French apps, PIPEDA and CASL-aware builds
+- [Australia](https://devmoratech.com/web-development-australia): Privacy Act-aware builds, AWS Sydney hosting, AEST afternoon calls
+
+## Portfolio
+
+- [Work](https://devmoratech.com/work): All live projects
+- Accukount Pharma: stock verification SaaS for Canadian pharmacies, with web dashboards and English/French iOS and Android apps
+- AssetKount: enterprise asset lifecycle and verification platform
+- Midland Commercials: used truck marketplace for a UK dealer, with an AI sales assistant and server-rendered SEO listings
+- BRIT Commercials: website and admin panel for a Derby-based HGV dealer
+- Transport management system and driver app for a UK haulage business
+- Hospital management system for clinics and small hospitals
+- Sellaids: multi-vendor e-commerce platform with vendor panels and a React storefront
+
+## Case studies
+
+- [All case studies](https://devmoratech.com/case-studies): Problem, what we built, technology and result for each project
+- [Midland Commercials](https://devmoratech.com/case-studies/midland-commercials): UK used truck marketplace with an AI sales assistant
+- [BRIT Commercials](https://devmoratech.com/case-studies/brit-commercials): HGV dealer website, admin panel and technical SEO
+- [Transport management system](https://devmoratech.com/case-studies/transport-management-system): Custom TMS for a UK haulier
+- [Driver app](https://devmoratech.com/case-studies/driver-app): React Native walkaround check and jobs app
+- [Hospital management system](https://devmoratech.com/case-studies/hospital-management-system): System for small hospitals and clinics
+- [Sellaids](https://devmoratech.com/case-studies/sellaids): Multi-vendor e-commerce platform and Cloudinary CDN migration
+- [Accukount Pharma](https://devmoratech.com/case-studies/accukount-pharma): Stock verification SaaS for Canadian pharmacies
+- [AssetKount](https://devmoratech.com/case-studies/assetkount): Enterprise asset verification platform
+- [Dental Aspire](https://devmoratech.com/case-studies/dental-aspire): Dental education website with a self-managed blog
+- [Pixeleyes](https://devmoratech.com/case-studies/pixeleyes): Online store for a children's eye health brand
+- [Stripe payments integration](https://devmoratech.com/case-studies/stripe-payments-integration): Stripe Terminal, subscriptions and ACH in a PHP platform
+
+## Company
+
+- [About](https://devmoratech.com/about)
+- [Contact and free quote](https://devmoratech.com/contact)
+- [Blog](https://devmoratech.com/blog)
+- [LinkedIn company page](https://www.linkedin.com/company/devmora-technologies/)
+- [Clutch profile and client reviews](https://clutch.co/profile/devmora-technology)
+
+## Guides
+
+- [Web app development cost in 2026](https://devmoratech.com/blog/web-app-development-cost): Realistic price ranges for websites, web apps, SaaS MVPs and marketplaces
+- [How to build a SaaS MVP](https://devmoratech.com/blog/saas-mvp-development-guide): Validation, features, stack, multi-tenancy, billing, timelines and cost
+- [Outsource web development to India](https://devmoratech.com/blog/outsource-web-development-to-india): Choosing a partner, structuring the project, time zones and IP
+- [How to choose a web development company](https://devmoratech.com/blog/how-to-choose-a-web-development-company): 12 questions to ask an agency
+- [Fixed price vs time and materials](https://devmoratech.com/blog/fixed-price-vs-time-and-materials): Which software contract model to use
+- [React vs Next.js for business websites](https://devmoratech.com/blog/react-vs-nextjs-for-business-websites)
+- [React Native vs native apps](https://devmoratech.com/blog/react-native-vs-native-apps)
+- [Transport management system for UK hauliers](https://devmoratech.com/blog/transport-management-system-uk-hauliers)
+- [Digital walkaround check apps for fleets](https://devmoratech.com/blog/digital-walkaround-checks-driver-app)
+- [Hospital management system features](https://devmoratech.com/blog/hospital-management-system-features)
