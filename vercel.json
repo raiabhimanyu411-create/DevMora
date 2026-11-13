@@ -55,5 +55,12 @@
       "source": "/favicon.ico",
       "destination": "/assets/icons/icon-48.png"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/case-studies/transport-management-system",
+      "destination": "/case-studies/uk-haulier-tms",
+      "permanent": true
+    }
   ]
 }

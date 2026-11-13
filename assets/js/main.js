@@ -107,6 +107,41 @@
     counters.forEach(el => cio.observe(el));
   }
 
+  /* ── Client-region clocks ── */
+  const localClocks = [...document.querySelectorAll('[data-local-time]')];
+  if (localClocks.length && window.Intl && Intl.DateTimeFormat) {
+    const updateLocalClocks = () => {
+      const now = new Date();
+      localClocks.forEach(clock => {
+        const zone = clock.dataset.timeZone;
+        try {
+          const time = new Intl.DateTimeFormat('en-GB', {
+            timeZone: zone,
+            hour: '2-digit',
+            minute: '2-digit',
+            hourCycle: 'h23'
+          }).format(now);
+          const zoneName = new Intl.DateTimeFormat('en-GB', {
+            timeZone: zone,
+            timeZoneName: 'short'
+          }).formatToParts(now).find(part => part.type === 'timeZoneName')?.value || '';
+          clock.querySelector('.world-clock__time').textContent = time;
+          clock.querySelector('.world-clock__zone').textContent = zoneName;
+          clock.dateTime = now.toISOString();
+          clock.setAttribute('aria-label', `${clock.dataset.city}: ${time} ${zoneName}`);
+        } catch (_) {
+          clock.querySelector('.world-clock__time').textContent = '--:--';
+          clock.querySelector('.world-clock__zone').textContent = '';
+        }
+      });
+    };
+    updateLocalClocks();
+    window.setTimeout(() => window.setInterval(updateLocalClocks, 60_000), 60_000 - (Date.now() % 60_000));
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) updateLocalClocks();
+    });
+  }
+
   /* ── Rotating words ── */
   document.querySelectorAll('.rotator').forEach(rot => {
     const words = [...rot.children];
@@ -227,6 +262,22 @@
     else if (href.startsWith('mailto:')) track('email_click', { link_url: href, link_text: label, page_path: location.pathname });
   });
 
+  /* ── Work page: category filter ── */
+  const filters = document.querySelector('.filters');
+  if (filters) {
+    const cards = document.querySelectorAll('.work-grid > [data-cat]');
+    filters.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      const cat = btn.dataset.filter;
+      filters.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      cards.forEach(card => {
+        card.hidden = cat !== 'all' && !card.dataset.cat.split(' ').includes(cat);
+        card.classList.add('is-visible');
+      });
+    });
+  }
+
   /* ── Contact form → sends enquiry by email (FormSubmit), WhatsApp fallback ── */
   const form = document.getElementById('contactForm');
   if (form) {
@@ -248,7 +299,8 @@
       if (firstBad) { firstBad.focus(); return; }
 
       const data = new FormData(form);
-      const name = `${data.get('firstName') || ''} ${data.get('lastName') || ''}`.trim();
+      const name = (data.get('name') || `${data.get('firstName') || ''} ${data.get('lastName') || ''}`).trim();
+      const firstName = name.split(/\s+/)[0] || '';
       const payload = {
         _subject: `New project enquiry: ${name}`,
         _template: 'table',
@@ -297,7 +349,7 @@
         }
         if (!sent) throw new Error('all senders failed');
         track('generate_lead', { form_id: 'contactForm', service: payload.Service, timeline: payload.Timeline });
-        showSuccess(data.get('firstName'), payload.Email);
+        showSuccess(firstName, payload.Email);
       } catch (err) {
         const text = [
           `Hi Devmora, I'm ${name}.`,
@@ -354,77 +406,6 @@
   /* ==========================================================================
      Liquid glass
      ========================================================================== */
-
-  /* ── Living colour field behind every page ── */
-  if (!document.querySelector('.lg-backdrop')) {
-    const bd = document.createElement('div');
-    bd.className = 'lg-backdrop';
-    bd.setAttribute('aria-hidden', 'true');
-    bd.innerHTML = '<i></i><i></i><i></i><i></i><i></i>';
-    document.body.prepend(bd);
-  }
-
-  /* ── Lens refraction on the header bar (Chromium only) ──
-     Builds a displacement map for the bar's rounded shape: pixels near the
-     edge are pulled inward, like light bending through the rim of a lens. */
-  const isChromium = !!(navigator.userAgentData && navigator.userAgentData.brands.some(b => /Chromium/.test(b.brand)));
-  const bar = document.querySelector('.nav__bar');
-  if (bar && isChromium && !reduceMotion && CSS.supports('backdrop-filter', 'url(#a)')) {
-    const NS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('width', '0'); svg.setAttribute('height', '0');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.style.position = 'absolute';
-    svg.innerHTML = '<filter id="lg-refract" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">' +
-      '<feImage id="lg-map" x="0" y="0" preserveAspectRatio="none" result="map"/>' +
-      '<feDisplacementMap in="SourceGraphic" in2="map" scale="38" xChannelSelector="R" yChannelSelector="G"/></filter>';
-    document.body.appendChild(svg);
-    const feImage = svg.querySelector('#lg-map');
-
-    let barW = 0, barH = 0;
-    const buildMap = () => {
-      const w = Math.round(barW), h = Math.round(barH);
-      if (!w || !h) return;
-      const c = document.createElement('canvas');
-      c.width = w; c.height = h;
-      const ctx = c.getContext('2d');
-      const img = ctx.createImageData(w, h);
-      const r = Math.min(h / 2, parseFloat(getComputedStyle(bar).borderTopLeftRadius) || h / 2);
-      const bezel = Math.min(22, h * 0.42);
-      const cx = w / 2, cy = h / 2, hx = w / 2 - r, hy = h / 2 - r;
-      for (let y = 0; y < h; y++) {
-        for (let x = 0; x < w; x++) {
-          const px = x + 0.5 - cx, py = y + 0.5 - cy;
-          const qx = Math.abs(px) - hx, qy = Math.abs(py) - hy;
-          let nx = 0, ny = 0, dist;
-          if (qx > 0 && qy > 0) {
-            const l = Math.hypot(qx, qy) || 1;
-            dist = r - l; nx = Math.sign(px) * qx / l; ny = Math.sign(py) * qy / l;
-          } else if (qx > qy) { dist = r - qx; nx = Math.sign(px); }
-          else { dist = r - qy; ny = Math.sign(py); }
-          let m = 0;
-          if (dist < bezel) { const t = 1 - Math.max(dist, 0) / bezel; m = t * t; }
-          const i = (y * w + x) * 4;
-          img.data[i] = 128 - nx * m * 127;
-          img.data[i + 1] = 128 - ny * m * 127;
-          img.data[i + 2] = 128;
-          img.data[i + 3] = 255;
-        }
-      }
-      ctx.putImageData(img, 0, 0);
-      feImage.setAttribute('width', w);
-      feImage.setAttribute('height', h);
-      feImage.setAttribute('href', c.toDataURL());
-    };
-    let rt, first = true;
-    new ResizeObserver(entries => {
-      const box = entries[0].borderBoxSize && entries[0].borderBoxSize[0];
-      barW = box ? box.inlineSize : entries[0].contentRect.width;
-      barH = box ? box.blockSize : entries[0].contentRect.height;
-      if (first) { first = false; buildMap(); root.classList.add('lg-refract'); return; }
-      clearTimeout(rt); rt = setTimeout(buildMap, 150);
-    }).observe(bar);
-  }
 
   /* ── Smooth inertia scrolling (mouse wheel / trackpad, desktop only) ──
      The page glides to its target with a soft, eased delay. Keyboard,
