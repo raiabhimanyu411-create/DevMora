@@ -63,7 +63,7 @@
 
 - [Web app development cost in 2026](https://devmoratech.com/blog/web-app-development-cost): Realistic price ranges for websites, web apps, SaaS MVPs and marketplaces
 - [How to build a SaaS MVP](https://devmoratech.com/blog/saas-mvp-development-guide): Validation, features, stack, multi-tenancy, billing, timelines and cost
-- [Outsource web development to India](https://devmoratech.com/blog/outsource-web-development-to-india): Choosing a partner, structuring the project, time zones and IP
+- [Web development outsourcing India](https://devmoratech.com/blog/outsource-web-development-to-india): India vs UK/US hourly rates, choosing a partner, process, time zones, IP and a client example
 - [How to choose a web development company](https://devmoratech.com/blog/how-to-choose-a-web-development-company): 12 questions to ask an agency
 - [Fixed price vs time and materials](https://devmoratech.com/blog/fixed-price-vs-time-and-materials): Which software contract model to use
 - [React vs Next.js for business websites](https://devmoratech.com/blog/react-vs-nextjs-for-business-websites)
