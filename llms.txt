@@ -10,6 +10,7 @@
 ## Services
 
 - [All services](https://devmoratech.com/services): Website and web app development, SaaS, e-commerce, mobile apps, SEO and cloud support
+- [Web app development](https://devmoratech.com/web-app-development): Custom web apps, customer portals, dashboards and internal tools
 - [SaaS development](https://devmoratech.com/saas-development): MVP to scale, multi-tenant apps, subscriptions, roles and integrations
 - [Mobile app development](https://devmoratech.com/mobile-app-development): Cross-platform iOS and Android apps in React Native, plus the dashboards and APIs behind them
 - [Transport management system development](https://devmoratech.com/transport-management-system-development): Custom TMS and driver apps for UK hauliers: jobs, walkaround checks, defect tracking and compliance reminders
@@ -69,6 +70,7 @@
 - [React vs Next.js for business websites](https://devmoratech.com/blog/react-vs-nextjs-for-business-websites)
 - [React Native vs native apps](https://devmoratech.com/blog/react-native-vs-native-apps)
 - [Transport management system for UK hauliers](https://devmoratech.com/blog/transport-management-system-uk-hauliers)
+- [Bespoke vs off-the-shelf TMS](https://devmoratech.com/blog/bespoke-vs-off-the-shelf-tms): When to buy a TMS, when to build one, and how to compare costs
 - [Digital walkaround check apps for fleets](https://devmoratech.com/blog/digital-walkaround-checks-driver-app)
 - [Hospital management system features](https://devmoratech.com/blog/hospital-management-system-features)
 
